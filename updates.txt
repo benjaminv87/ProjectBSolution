@@ -1,0 +1,30 @@
+-- 12/10/2020 --
+
+Database aangemaakt & aan project gekoppeld (intity framework)
+
+Loginscherm aangemaakt,functionaliteit geprogrammeerd
+* Inloggen met gehasht wachtwoord (opgeslagen in database)
+* Verschillende gebruikersprofielen toegevoegd aan database (admin, magazijnier,verkoper)
+
+Hoofdmenu aangemaakt:
+* mogelijkheid om uit te loggen in menuitem geprogrammeerd
+* menuitem gebruikersgegevens aanpassen (nog te programmeren)
+* verschillende tabbladen voor functionaliteit:
+  > Databeheer (nog geen functionaliteit)
+  > Overzicht (nog geen functionaliteit)
+  > Bestelling (nog geen functionaliteit)
+  > gebruikerslijst aan listbox gekoppeld 
+
+-- 13/10/2020 --
+
+Opzoekwerk rond verschillende manieren van opbouw van programma
+Dummiedata in DB bijgevoegd (klanten)
+GemeenteData in DB bijgevoegd
+
+-- 14/10/2020 --
+
+Oefening volledig opnieuw gemaakt. 
+Bijkomende mogelijkheden onderzocht om data weer te geven in programma. 
+
+Basis van programma aangemaakt. (LoginScherm en Main)
+Verschillende pages aangemaakt die kunnen geladen worden in Main
