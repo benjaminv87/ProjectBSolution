@@ -28,3 +28,9 @@ Bijkomende mogelijkheden onderzocht om data weer te geven in programma.
 
 Basis van programma aangemaakt. (LoginScherm en Main)
 Verschillende pages aangemaakt die kunnen geladen worden in Main
+
+-- 15/10/2020 --
+
+Scherm voor nieuwe gebruiker aangemaakt
+databeheer aangemaakt
+Fouten uit db gehaald
