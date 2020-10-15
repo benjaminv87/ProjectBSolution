@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ProjectB"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+        <!-- https://colorhunt.co/palette/213598 -->
     </Application.Resources>
 </Application>

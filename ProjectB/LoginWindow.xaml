@@ -5,31 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
-    <Grid>
+        Title="LoginWindow" MinHeight="490" MinWidth="490"  WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20"/>
+    </WindowChrome.WindowChrome>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
-            <SolidColorBrush Color="LightBlue"/>
+
+            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
         </Grid.Background>
-        <Border Margin="20,20,20,20" Background="White" Width=" 400" Height="auto">
+        <DockPanel>
+            <DockPanel.Background>
+                <SolidColorBrush Color="#fbf7f0"/>
+            </DockPanel.Background>
+            <Button Content="X" x:Name="btnCloseWindow" HorizontalAlignment="Right" Width="20" Click="btnCloseWindow_Click"/>
+        </DockPanel>
+        <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width=" 400" Height="380"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
-            <StackPanel  >
+            <StackPanel>
 
-                <Label Content="Login" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="28" FontWeight="Bold"/>
+                <Label Content="Login" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="28" Foreground="#555555" FontWeight="Bold"/>
                 <Grid>
-                    <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbUsername_TextChanged"/>
-                    <TextBlock x:Name="tblUsername" Text="Enter Username" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="Gray"/>
+                    <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbUsername_TextChanged" Foreground="#555555"/>
+                    <TextBlock x:Name="tblUsername" Text="Gebruikersnaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
                 </Grid>
                 <Grid>
-                    <PasswordBox PasswordChar="*" x:Name="pwbPass" HorizontalContentAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" PasswordChanged="pwbPass_PasswordChanged"/>
-                    <TextBlock x:Name="tblPass" Text="Enter Password" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="Gray"/>
+                    <PasswordBox PasswordChar="*" x:Name="pwbPass" HorizontalContentAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" PasswordChanged="pwbPass_PasswordChanged" Foreground="#555555"/>
+                    <TextBlock x:Name="tblPass" Text="Wachtwoord" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
                 </Grid>
-                <Border Width="60">
-                    <Button x:Name="btnLogin" Click="btnLogin_Click" Content="Login" HorizontalAlignment="Right" Width="60" Background="AliceBlue" />
-                </Border>
 
-
+                <Button x:Name="btnLogin" Click="btnLogin_Click" Content="Aanmelden" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5"  />
             </StackPanel>
         </Border>
     </Grid>

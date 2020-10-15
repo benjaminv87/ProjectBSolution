@@ -1,0 +1,59 @@
+﻿<Page x:Class="ProjectB.DatabeheerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectB"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DatabeheerPage" Background="White">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
+
+            <Expander ExpandDirection="Down">
+                <Expander.Header>
+                    <TextBlock Text="Producten"/>
+
+                </Expander.Header>
+                <StackPanel>
+                    <DataGrid x:Name="dgProducten"/>
+
+                    <Button Click="SaveChanges" Content="Wijzigingen opslaan" />
+                </StackPanel>
+            </Expander>
+            <Expander ExpandDirection="Down">
+                <Expander.Header>
+                    <TextBlock Text="Leveranciers"/>
+                </Expander.Header>
+                <StackPanel>
+                    <DataGrid x:Name="dgLeveranciers" Width="auto"/>
+
+                    <Button Click="SaveChanges" Content="Wijzigingen opslaan"/>
+                </StackPanel>
+            </Expander>
+            <Expander x:Name="expKlanten" ExpandDirection="Down">
+                <Expander.Header>
+                    <TextBlock  Text="Klanten"/>
+                </Expander.Header>
+                <StackPanel>
+                    <DataGrid x:Name="dgKlanten" Width="auto" />
+
+                    <Button Click="SaveChanges" Content="Wijzigingen opslaan" />
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Page>

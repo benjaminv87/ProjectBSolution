@@ -14,6 +14,12 @@ namespace ProjectB
     
     public partial class Bestelling
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Bestelling()
+        {
+            this.BestellingProduct = new HashSet<BestellingProduct>();
+        }
+    
         public int BestellingID { get; set; }
         public Nullable<System.DateTime> DatumOpgemaakt { get; set; }
         public Nullable<int> PersoneelslidID { get; set; }
@@ -23,6 +29,7 @@ namespace ProjectB
         public virtual Klant Klant { get; set; }
         public virtual Leverancier Leverancier { get; set; }
         public virtual Personeelslid Personeelslid { get; set; }
-        public virtual BestellingProduct BestellingProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }
     }
 }

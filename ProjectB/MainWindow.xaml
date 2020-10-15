@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="450" MinWidth="540" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#d9e4dd" Opacity="0.3"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel Grid.Row="1" Grid.Column="1" >
+                <Button x:Name="btnDatabeheer" Content="Databeheer" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnDatabeheer_Click" />
+                <Button x:Name="btnOverzicht" Content="Overzicht" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnOverzicht_Click" />
+                <Button x:Name="btnBestellingen" Content="Bestellingen" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnBestellingen_Click" />
+                <Button x:Name="btnGebruikers" Content="Gebruikers" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnGebruikers_Click" />
+            </WrapPanel>
         
-    </Grid>
+            <Frame  Grid.Row="2" Grid.Column="1" x:Name="Main" Background="White" NavigationUIVisibility="Hidden" />
+            </Grid>
 </Window>

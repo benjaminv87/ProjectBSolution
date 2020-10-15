@@ -31,7 +31,7 @@ namespace ProjectB
         {
             if (tbUsername.Text == "")
             {
-                tblUsername.Text = "Enter Username";
+                tblUsername.Text = "Gebruikersnaam";
             }
             else
             {
@@ -42,7 +42,7 @@ namespace ProjectB
         {
             if (pwbPass.Password == "")
             {
-                tblPass.Text = "Enter Password";
+                tblPass.Text = "Wachtwoord";
             }
             else
             {
@@ -68,6 +68,11 @@ namespace ProjectB
                     MessageBox.Show("Gebruikersnaam of wachtwoord verkeerd!");
                 }
             }
+        }
+
+        private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

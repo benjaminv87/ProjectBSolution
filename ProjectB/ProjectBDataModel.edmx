@@ -94,7 +94,7 @@
           <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Naam" Type="nvarchar" MaxLength="50" />
           <Property Name="Marge" Type="int" />
-          <Property Name="Inkoopprijs" Type="int" />
+          <Property Name="Inkoopprijs" Type="float" />
           <Property Name="Eenheid" Type="nvarchar" MaxLength="50" />
           <Property Name="BTW" Type="int" />
           <Property Name="LeverancierID" Type="int" />
@@ -147,26 +147,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BestellingProduct_Bestelling">
-          <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="1" />
-          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="0..1" />
+          <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="0..1" />
+          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bestelling">
               <PropertyRef Name="BestellingID" />
             </Principal>
             <Dependent Role="BestellingProduct">
-              <PropertyRef Name="BestellingProductID" />
+              <PropertyRef Name="BestellingID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BestellingProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
             </Principal>
             <Dependent Role="BestellingProduct">
-              <PropertyRef Name="BestellingProductID" />
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -424,7 +424,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Marge" Type="Int32" />
-          <Property Name="Inkoopprijs" Type="Int32" />
+          <Property Name="Inkoopprijs" Type="Double" />
           <Property Name="Eenheid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BTW" Type="Int32" />
           <Property Name="LeverancierID" Type="Int32" />
@@ -480,26 +480,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BestellingProduct_Bestelling">
-          <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="1" />
-          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="0..1" />
+          <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="0..1" />
+          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bestelling">
               <PropertyRef Name="BestellingID" />
             </Principal>
             <Dependent Role="BestellingProduct">
-              <PropertyRef Name="BestellingProductID" />
+              <PropertyRef Name="BestellingID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BestellingProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="BestellingProduct" Type="Self.BestellingProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
             </Principal>
             <Dependent Role="BestellingProduct">
-              <PropertyRef Name="BestellingProductID" />
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
