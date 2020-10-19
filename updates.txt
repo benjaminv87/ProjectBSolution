@@ -34,3 +34,7 @@ Verschillende pages aangemaakt die kunnen geladen worden in Main
 Scherm voor nieuwe gebruiker aangemaakt
 databeheer aangemaakt
 Fouten uit db gehaald
+
+-- 16/10/2020 --
+Begonnen aan wizard nieuwe bestelling
+autocomplete textbox gemaakt
