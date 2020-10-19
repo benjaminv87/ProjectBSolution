@@ -58,6 +58,8 @@ namespace ProjectB
             btnOverzicht.Background = Brushes.White;
             btnGebruikers.Foreground = Light;
             btnGebruikers.Background = Dark;
+
+
             Main.Content = new OverzichtPage();
         }
 

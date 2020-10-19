@@ -21,6 +21,8 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <DataGrid x:Name="dgGebruikers"/>
-        </StackPanel>    </Grid>
+            <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
+            <DataGrid x:Name="dgBestellingen"/>
+        </StackPanel>
+    </Grid>
 </Page>

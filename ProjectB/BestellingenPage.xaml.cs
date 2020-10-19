@@ -26,8 +26,13 @@ namespace ProjectB
             using (ProjectBEntities ctx = new ProjectBEntities())
             {
                 var bestellingen = ctx.Bestelling.Select(p => p);
-                dgGebruikers.ItemsSource = bestellingen.ToList();
+                dgBestellingen.ItemsSource = bestellingen.ToList();
             }
+        }
+
+        private void btnNieuweBestelling_Click(object sender, RoutedEventArgs e)
+        {
+            new NieuweBestellingWindow().ShowDialog();
         }
     }
 }
