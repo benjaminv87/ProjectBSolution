@@ -38,3 +38,9 @@ Fouten uit db gehaald
 -- 16/10/2020 --
 Begonnen aan wizard nieuwe bestelling
 autocomplete textbox gemaakt
+
+-- 19/10/2020 --
+Functionaliteit wizard bestelling klant afgewerkt
+
+-- 20/10/2020 --
+Functionaliteit wizard bestelling leverancier afgewerkt
