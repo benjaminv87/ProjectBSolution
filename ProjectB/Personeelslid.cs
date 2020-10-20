@@ -30,5 +30,10 @@ namespace ProjectB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bestelling> Bestelling { get; set; }
         public virtual Functie Functie { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Voornaam} {Achternaam}";
+        }
     }
 }

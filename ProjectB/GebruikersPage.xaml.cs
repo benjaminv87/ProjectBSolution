@@ -26,6 +26,7 @@ namespace ProjectB
             UpdateList();
         }
 
+        public ProjectBEntities ctx = new ProjectBEntities();
         private void btnNieuweWerknemer_Click(object sender, RoutedEventArgs e)
         {
             NieweWerknemerWindow window = new NieweWerknemerWindow();
@@ -37,11 +38,8 @@ namespace ProjectB
         }
         public void UpdateList()
         {
-            using (ProjectBEntities ctx = new ProjectBEntities())
-            {
                 var gebruikers = ctx.Personeelslid.Select(p => p);
                 dgGebruikers.ItemsSource = gebruikers.ToList();
-            }
         }
     }
 }

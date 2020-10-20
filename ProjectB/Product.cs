@@ -33,5 +33,10 @@ namespace ProjectB
         public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }
         public virtual Categorie Categorie { get; set; }
         public virtual Leverancier Leverancier { get; set; }
+
+        public override string ToString()
+        {
+            return Naam;
+        }
     }
 }

@@ -1,12 +1,11 @@
-﻿<Window
+﻿<Window x:Class="ProjectB.NieuweBestellingLeverancierWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
-        xmlns:cal="http://www.caliburnproject.org" x:Class="ProjectB.NieuweBestellingWindow"
         mc:Ignorable="d"
-        Title="NieuweBestellingWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
+        Title="NieuweBestellingLeverancierWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="20"/>
     </WindowChrome.WindowChrome>
@@ -19,7 +18,7 @@
             <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
         </Grid.Background>
         <DockPanel Background="#fbf7f0">
-            <Button Content="X" x:Name="btnCloseWindow" IsHitTestVisible="True" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top" Click="btnCloseWindow_Click" BorderThickness="0" cal:Bind.AtDesignTime="True" />
+            <Button Content="X" x:Name="btnCloseWindow" IsHitTestVisible="True" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top" Click="btnCloseWindow_Click" BorderThickness="0" />
         </DockPanel>
         <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width="auto" Height="auto"  >
             <Border.Effect>
@@ -28,36 +27,36 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition x:Name="rowKlanten" Height="auto"/>
+                    <RowDefinition x:Name="rowLeveranciers" Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition x:Name="rowProducten" Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition x:Name="rowWinkelkar" Height="auto"/>
 
                 </Grid.RowDefinitions>
-                <Button x:Name="btnKlant" Grid.Row="0" Content="KLANT" Click="btnKlant_Click"/>
-                <StackPanel x:Name="spKlant" Grid.Row="1" Visibility="Collapsed">
+                <Button x:Name="btnLeverancier" Grid.Row="0" Content="LEVERANCIER" Click="btnLeverancier_Click"/>
+                <StackPanel x:Name="spLeverancier" Grid.Row="1" Visibility="Collapsed">
                     <WrapPanel>
-                        <TextBlock Text="Klantnaam:"/>
+                        <TextBlock Text="Leverancier:"/>
                         <TextBox x:Name="tbFilter" TextChanged="tbFilter_TextChanged" Width="300"/>
                     </WrapPanel>
-                                        <ListBox x:Name="lbFilter" MaxHeight="300" Visibility="Collapsed" MouseDoubleClick="lbFilter_MouseDoubleClick" >
+                    <ListBox x:Name="lbFilter" MaxHeight="300" Visibility="Collapsed" MouseDoubleClick="lbFilter_MouseDoubleClick" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="2" BorderThickness="1,1,1,1" BorderBrush="black" Width="300">
                                     <StackPanel>
                                         <WrapPanel>
                                             <TextBlock Text="Id: "/>
-                                            <TextBlock Text="{Binding KlantID}"/>
+                                            <TextBlock Text="{Binding LeverancierID}"/>
                                         </WrapPanel>
 
                                         <WrapPanel>
-                                            <TextBlock Text="Voornaam: " />
-                                            <TextBlock Text="{Binding Voornaam}"/>
+                                            <TextBlock Text="Naam: " />
+                                            <TextBlock Text="{Binding Naam}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <TextBlock Text="Achternaam: " />
-                                            <TextBlock Text="{Binding Achternaam}"/>
+                                            <TextBlock Text="Contactpersoon: " />
+                                            <TextBlock Text="{Binding Contactpersoon}"/>
                                         </WrapPanel>
                                         <WrapPanel>
                                             <TextBlock Text="Adres: " />
@@ -85,7 +84,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
-                        <TextBlock x:Name="tbBestellingVoor" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+                        <TextBlock x:Name="tbBestellingBij" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
                         <ListBox x:Name="lbCategorieen" Grid.Row="2" Grid.Column="1" SelectionMode="Single" SelectionChanged="lbCategorieen_SelectionChanged">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -120,7 +119,7 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         <WrapPanel HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
-                            <Button x:Name="btnToKlant" Content="&lt; Klant" Width="200" Margin="20,0,20,0" Click="btnToKlant_Click"/>
+                            <Button x:Name="btnToLeverancier" Content="&lt; Leverancier" Width="200" Margin="20,0,20,0" Click="btnToLeverancier_Click"/>
                             <Button x:Name="btnToWinkewagen" Content="Winkelwagen >" Width="200" Margin="20,0,20,0" Click="btnToWinkewagen_Click"/>
                         </WrapPanel>
                     </Grid>
@@ -144,7 +143,7 @@
                                         <TextBlock Text="{Binding Aantal}"/>
                                     </WrapPanel>
                                     <Button Tag="{Binding BestellingProductID}" Grid.Column="1" Content="Verwijderen" Click="ButtonVerwijderen_Click"/>
-                                   
+
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

@@ -25,5 +25,10 @@ namespace ProjectB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personeelslid> Personeelslid { get; set; }
+
+        public override string ToString()
+        {
+            return FunctieTitel;
+        }
     }
 }

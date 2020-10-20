@@ -11,7 +11,7 @@ namespace ProjectB
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Klant
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace ProjectB
         {
             this.Bestelling = new HashSet<Bestelling>();
         }
-
+    
         public int KlantID { get; set; }
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
@@ -31,17 +31,15 @@ namespace ProjectB
         public string Emailadres { get; set; }
         public Nullable<System.DateTime> AangemaaktOp { get; set; }
         public string Opmerking { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bestelling> Bestelling { get; set; }
         public virtual Gemeente Gemeente { get; set; }
 
-        public string Adres
+
+        public override string ToString()
         {
-            get { 
-                if (Bus == null) { Bus = ""; };
-                return $"{Straatnaam} {Huisnummer} {Bus}, {Gemeente.Postcode} {Gemeente.Gemeente1}"; 
-            }
+            return $"{Voornaam} {Achternaam}";
         }
     }
 }

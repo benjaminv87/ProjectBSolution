@@ -20,19 +20,36 @@ namespace ProjectB
     /// </summary>
     public partial class BestellingenPage : Page
     {
-        public BestellingenPage()
+        public BestellingenPage(Personeelslid ingelogdPersoneelslid)
         {
             InitializeComponent();
-            using (ProjectBEntities ctx = new ProjectBEntities())
+
+            var bestellingenKlanten = ctx.Bestelling.Where(b=>b.KlantID!=null);
+            var bestellingenLeveranciers = ctx.Bestelling.Where(b => b.LeverancierID != null);
+            dgBestellingenKlant.ItemsSource = bestellingenKlanten.ToList();
+            dgBestellingenLeveranciers.ItemsSource = bestellingenLeveranciers.ToList();
+            this.ingelogdPersoneelslid = ingelogdPersoneelslid;
+
+            if(ingelogdPersoneelslid.FunctieID == 2)
             {
-                var bestellingen = ctx.Bestelling.Select(p => p);
-                dgBestellingen.ItemsSource = bestellingen.ToList();
+                spBestellingKlant.Visibility = Visibility.Collapsed;
+            }
+            else if (ingelogdPersoneelslid.FunctieID == 3)
+            {
+                spBestellingLeverancier.Visibility = Visibility.Collapsed;
             }
         }
+        public ProjectBEntities ctx = new ProjectBEntities();
 
+        public Personeelslid ingelogdPersoneelslid;
         private void btnNieuweBestelling_Click(object sender, RoutedEventArgs e)
         {
-            new NieuweBestellingWindow().ShowDialog();
+            new NieuweBestellingWindow(ingelogdPersoneelslid).ShowDialog();
+        }
+
+        private void btnNieuweBestellingLeverancier_Click(object sender, RoutedEventArgs e)
+        {
+            new NieuweBestellingLeverancierWindow(ingelogdPersoneelslid).ShowDialog();
         }
     }
 }

@@ -106,6 +106,9 @@
     <Compile Include="Leverancier.cs">
       <DependentUpon>ProjectBDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NieuweBestellingLeverancierWindow.xaml.cs">
+      <DependentUpon>NieuweBestellingLeverancierWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NieuweBestellingWindow.xaml.cs">
       <DependentUpon>NieuweBestellingWindow.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NieuweBestellingLeverancierWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NieuweBestellingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,11 +215,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <EntityDeploy Include="ProjectBDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjectBDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
     <None Include="ProjectBDataModel.edmx.diagram">
       <DependentUpon>ProjectBDataModel.edmx</DependentUpon>
     </None>
@@ -228,19 +235,19 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ProjectBDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ProjectBDataModel.Context.cs</LastGenOutput>
       <DependentUpon>ProjectBDataModel.edmx</DependentUpon>
+      <LastGenOutput>ProjectBDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ProjectBDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProjectBDataModel.edmx</DependentUpon>
       <LastGenOutput>ProjectBDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

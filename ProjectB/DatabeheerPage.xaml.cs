@@ -20,19 +20,19 @@ namespace ProjectB
     /// </summary>
     public partial class DatabeheerPage : Page
     {
-        
+
         public DatabeheerPage()
         {
             InitializeComponent();
 
-                var producten = ctx.Product.Select(p => p);
-                var klanten = ctx.Klant.Where(k=>k.Bestelling.Count>0);
-                var leveranciers = ctx.Leverancier.Select(l => l);
-                dgProducten.ItemsSource = producten.ToList();
-                dgKlanten.ItemsSource = klanten.ToList();
-                dgLeveranciers.ItemsSource = leveranciers.ToList();
-            }
-        
+            var producten = ctx.Product.Select(p => p);
+            var klanten = ctx.Klant.Select(k => k);
+            var leveranciers = ctx.Leverancier.Select(l => l);
+            dgProducten.ItemsSource = producten.ToList();
+            dgKlanten.ItemsSource = klanten.ToList();
+            dgLeveranciers.ItemsSource = leveranciers.ToList();
+        }
+
         public ProjectBEntities ctx = new ProjectBEntities();
 
         private void SaveChanges(object sender, RoutedEventArgs e)

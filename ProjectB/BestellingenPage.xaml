@@ -21,8 +21,16 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
-            <DataGrid x:Name="dgBestellingen"/>
+            <StackPanel x:Name="spBestellingKlant">
+                <TextBlock Text="Bestellingen Klanten"/>
+                <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
+                <DataGrid x:Name="dgBestellingenKlant"/>
+            </StackPanel>
+            <StackPanel x:Name="spBestellingLeverancier">
+                <TextBlock Text="Bestellingen Leveranciers"/>
+                <Button Content="Nieuwe bestelling Leverancier" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
+                <DataGrid x:Name="dgBestellingenLeveranciers"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

@@ -25,11 +25,12 @@ namespace ProjectB
             InitializeComponent();
             Dark.Color = Color.FromRgb(85, 85, 85);
             Light.Color = Color.FromRgb(251, 247, 240);
+            this.ingelogdPersoneelslid = ingelogdPersoneelslid;
         }
 
         public SolidColorBrush Dark = new SolidColorBrush();
         public SolidColorBrush Light = new SolidColorBrush();
-
+        public Personeelslid ingelogdPersoneelslid;
 
         private void btnDatabeheer_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +74,7 @@ namespace ProjectB
             btnOverzicht.Background = Dark;
             btnGebruikers.Foreground = Light;
             btnGebruikers.Background = Dark;
-            Main.Content = new BestellingenPage();
+            Main.Content = new BestellingenPage(ingelogdPersoneelslid);
         }
 
         private void btnGebruikers_Click(object sender, RoutedEventArgs e)

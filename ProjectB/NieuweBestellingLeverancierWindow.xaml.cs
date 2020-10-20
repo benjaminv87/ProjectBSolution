@@ -15,27 +15,26 @@ using System.Windows.Shapes;
 namespace ProjectB
 {
     /// <summary>
-    /// Interaction logic for NieuweBestellingWindow.xaml
+    /// Interaction logic for NieuweBestellingLeverancierWindow.xaml
     /// </summary>
-    public partial class NieuweBestellingWindow : Window
+    public partial class NieuweBestellingLeverancierWindow : Window
     {
-        public NieuweBestellingWindow(Personeelslid ingelogdPersoneelslid)
+        public NieuweBestellingLeverancierWindow(Personeelslid ingelogdPersoneelslid)
         {
             InitializeComponent();
             this.ingelogdPersoneelslid = ingelogdPersoneelslid;
             defaultBackground = btnProduct.Background;
-            klantenLijst = ctx.Klant.Select(k => k);
+            leveranciersLijst = ctx.Leverancier.Select(l => l);
             lbCategorieen.ItemsSource = ctx.Categorie.Select(p => p).ToList();
-            lbProducten.ItemsSource= ctx.Product.Select(p => p).ToList();
             newOrder.PersoneelslidID = ingelogdPersoneelslid.PersoneelslidID;
-            toKlant();
+            toLeverancier();
         }
 
         public Personeelslid ingelogdPersoneelslid;
         public Brush defaultBackground;
         public ProjectBEntities ctx = new ProjectBEntities();
-        public IQueryable<Klant> klantenLijst;
-        public List<Klant> filterLijst = new List<Klant>();
+        public IQueryable<Leverancier> leveranciersLijst;
+        public List<Leverancier> filterLijst = new List<Leverancier>();
         public GridLength autoHeight = new GridLength(1.0, GridUnitType.Star);
         public Bestelling newOrder = new Bestelling();
 
@@ -48,41 +47,38 @@ namespace ProjectB
                 lbFilter.Visibility = Visibility.Visible;
                 lbFilter.ItemsSource = null;
                 filterLijst.Clear();
-                IQueryable<Klant> tempLijst = klantenLijst;
-                string[] filter = tbFilter.Text.Split(' ');
-                string a = filter[0];
+                IQueryable<Leverancier> tempLijst = leveranciersLijst;
+                string a = tbFilter.Text;
 
-                tempLijst = tempLijst.Where(k => k.Voornaam.StartsWith(a) || k.Achternaam.StartsWith(a));
-                foreach (string item in filter)
+                tempLijst = tempLijst.Where(l => l.Naam.StartsWith(a));
+
+                foreach (Leverancier leverancier in tempLijst)
                 {
-                    tempLijst = tempLijst.Where(k => k.Voornaam.StartsWith(item) || k.Achternaam.StartsWith(item));
-                }
-                foreach (var klant in tempLijst)
-                {
-                    filterLijst.Add(klant);
+                    filterLijst.Add(leverancier);
                 }
                 lbFilter.ItemsSource = filterLijst;
             }
             else
             {
-                lbFilter.ItemsSource = null;
+                lbFilter.ItemsSource = leveranciersLijst.ToList();
                 lbFilter.Visibility = Visibility.Collapsed;
             }
         }
         private void lbFilter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Klant geselecteerdeKlant = (Klant)lbFilter.SelectedItem;
-            spKlant.Visibility = Visibility.Collapsed;
+            Leverancier geselecteerdeLeverancier = (Leverancier)lbFilter.SelectedItem;
+            lbProducten.ItemsSource = ctx.Product.Where(p => p.LeverancierID == geselecteerdeLeverancier.LeverancierID).ToList();
+            spLeverancier.Visibility = Visibility.Collapsed;
             spProduct.Visibility = Visibility.Visible;
-            tbBestellingVoor.Text = $"Bestelling voor: {geselecteerdeKlant.Voornaam} {geselecteerdeKlant.Achternaam}";
+            tbBestellingBij.Text = $"Bestelling bij: {geselecteerdeLeverancier.Naam}";
             tbFilter.Text = "";
-            newOrder.KlantID = geselecteerdeKlant.KlantID;
+            newOrder.LeverancierID = geselecteerdeLeverancier.LeverancierID;
             toProduct();
         }
 
-        private void btnKlant_Click(object sender, RoutedEventArgs e)
+        private void btnLeverancier_Click(object sender, RoutedEventArgs e)
         {
-            toKlant();
+            toLeverancier();
         }
 
         private void btnProduct_Click(object sender, RoutedEventArgs e)
@@ -95,11 +91,11 @@ namespace ProjectB
             toWinkelkar();
         }
 
-        private void toKlant()
+        private void toLeverancier()
         {
-            expand(btnKlant);
-            spKlant.Visibility = Visibility.Visible;
-            rowKlanten.Height = autoHeight;
+            expand(btnLeverancier);
+            spLeverancier.Visibility = Visibility.Visible;
+            rowLeveranciers.Height = autoHeight;
         }
         private void toProduct()
         {
@@ -112,7 +108,6 @@ namespace ProjectB
             expand(btnWinkelkar);
             spWinkelkar.Visibility = Visibility.Visible;
             rowWinkelkar.Height = autoHeight;
-
             lbWinkelwagen.ItemsSource = newOrder.BestellingProduct.ToList();
         }
 
@@ -135,16 +130,16 @@ namespace ProjectB
             volleBorder.Right = 1;
             volleBorder.Top = 1;
             volleBorder.Bottom = 1;
-            List<Button> buttonlijst = new List<Button>() { btnProduct, btnKlant, btnWinkelkar };
+            List<Button> buttonlijst = new List<Button>() { btnProduct, btnLeverancier, btnWinkelkar };
             foreach (Button item in buttonlijst)
             {
                 item.Background = defaultBackground;
                 item.BorderThickness = volleBorder;
             }
-            spKlant.Visibility = Visibility.Collapsed;
+            spLeverancier.Visibility = Visibility.Collapsed;
             spProduct.Visibility = Visibility.Collapsed;
             spWinkelkar.Visibility = Visibility.Collapsed;
-            rowKlanten.Height = GridLength.Auto;
+            rowLeveranciers.Height = GridLength.Auto;
             rowProducten.Height = GridLength.Auto;
             rowWinkelkar.Height = GridLength.Auto;
         }
@@ -157,12 +152,13 @@ namespace ProjectB
         private void lbCategorieen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Categorie selectedCat = (Categorie)lbCategorieen.SelectedItem;
-            lbProducten.ItemsSource = ctx.Product.Where(p=>p.Categorie.CategorieNaam== selectedCat.CategorieNaam).ToList();
+
+            lbProducten.ItemsSource = ctx.Product.Where(p => p.Categorie.CategorieNaam == selectedCat.CategorieNaam).ToList();
         }
 
-        private void btnToKlant_Click(object sender, RoutedEventArgs e)
+        private void btnToLeverancier_Click(object sender, RoutedEventArgs e)
         {
-            toKlant();
+            toLeverancier();
         }
 
         private void btnToWinkewagen_Click(object sender, RoutedEventArgs e)
@@ -174,10 +170,10 @@ namespace ProjectB
         {
 
             int tag = Convert.ToInt32(((Button)sender).Tag);
-            AddToBestelling(sender,tag);
+            AddToBestelling(sender, tag);
         }
 
-        public void AddToBestelling(object sender,int id)
+        public void AddToBestelling(object sender, int id)
         {
             Button button = (Button)sender;
             BestellingProduct bestellingProduct = new BestellingProduct();
@@ -204,8 +200,8 @@ namespace ProjectB
 
         private void btnBestellingBevestigen_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result= MessageBox.Show("Wil je deze bestelling doorvoeren?", "Bestelling bevestigen", MessageBoxButton.YesNo);
-            if(result== MessageBoxResult.Yes)
+            MessageBoxResult result = MessageBox.Show("Wil je deze bestelling doorvoeren?", "Bestelling bevestigen", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
                 newOrder.DatumOpgemaakt = DateTime.Now;
                 ctx.SaveChanges();
