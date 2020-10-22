@@ -47,3 +47,8 @@ Functionaliteit wizard bestelling leverancier afgewerkt
 
 -- 21/10/2020 --
 mogelijkheid om nieuwe klanten toe te voegen en aan te passen.
+
+-- 22/10/2020 --
+nieuwe leverancier toevoegen & bestaande leverancier aanpassen
+nieuw product toevoegen manueel of via Json file  &  aanpassing via Json file of manueel aangemaakt
+
