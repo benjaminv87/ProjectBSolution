@@ -44,3 +44,6 @@ Functionaliteit wizard bestelling klant afgewerkt
 
 -- 20/10/2020 --
 Functionaliteit wizard bestelling leverancier afgewerkt
+
+-- 21/10/2020 --
+mogelijkheid om nieuwe klanten toe te voegen en aan te passen.
