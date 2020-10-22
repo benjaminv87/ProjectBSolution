@@ -112,6 +112,9 @@
     <Compile Include="NieuweBestellingWindow.xaml.cs">
       <DependentUpon>NieuweBestellingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NieuweKlantWindow.xaml.cs">
+      <DependentUpon>NieuweKlantWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NieweWerknemerWindow.xaml.cs">
       <DependentUpon>NieweWerknemerWindow.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NieuweBestellingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NieuweKlantWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

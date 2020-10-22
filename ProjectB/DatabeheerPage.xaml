@@ -30,8 +30,10 @@
                 </Expander.Header>
                 <StackPanel>
                     <DataGrid x:Name="dgProducten"/>
-
-                    <Button Click="SaveChanges" Content="Wijzigingen opslaan" />
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200"/>
+                        <Button x:Name="btnAanpassenProduct" Content="Product aanpassen" Width="200"/>
+                    </WrapPanel>
                 </StackPanel>
             </Expander>
             <Expander ExpandDirection="Down">
@@ -40,8 +42,11 @@
                 </Expander.Header>
                 <StackPanel>
                     <DataGrid x:Name="dgLeveranciers" Width="auto"/>
+                    <WrapPanel HorizontalAlignment="Center">
 
-                    <Button Click="SaveChanges" Content="Wijzigingen opslaan"/>
+                        <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200"/>
+                        <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200"/>
+                    </WrapPanel>
                 </StackPanel>
             </Expander>
             <Expander x:Name="expKlanten" ExpandDirection="Down">
@@ -50,8 +55,10 @@
                 </Expander.Header>
                 <StackPanel>
                     <DataGrid x:Name="dgKlanten" Width="auto" />
-
-                    <Button Click="SaveChanges" Content="Wijzigingen opslaan" />
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button x:Name="btnNieuweKlant" Content="Nieuwe Klant" Click="btnNieuweKlant_Click"/>
+                        <Button x:Name="btnKlantAanpassen" Content="Klant aanpassen" Click="btnKlantAanpassen_Click" />
+                    </WrapPanel>
                 </StackPanel>
             </Expander>
         </StackPanel>
