@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,14 +32,7 @@ namespace ProjectB
 
         public ProjectBEntities ctx = new ProjectBEntities();
 
-        private void btnNieuweKlant_Click(object sender, RoutedEventArgs e)
-        {
-            NieuweKlantWindow window = new NieuweKlantWindow();
-            if ((bool)window.ShowDialog())
-            {
-                UpdateListboxKlanten();
-            }
-        }
+
 
         public void UpdateListboxes()
         {
@@ -67,6 +62,15 @@ namespace ProjectB
             dgKlanten.ItemsSource = klanten.ToList();
         }
 
+        private void btnNieuweKlant_Click(object sender, RoutedEventArgs e)
+        {
+            NieuweKlantWindow window = new NieuweKlantWindow();
+            if ((bool)window.ShowDialog())
+            {
+                UpdateListboxKlanten();
+            }
+        }
+
         private void btnKlantAanpassen_Click(object sender, RoutedEventArgs e)
         {
             Klant geselecteerdeKlant = (Klant)dgKlanten.SelectedItem;
@@ -80,6 +84,55 @@ namespace ProjectB
                     UpdateListboxKlanten();
                 }
             }
+        }
+
+        private void btnNieuweLeverancier_Click(object sender, RoutedEventArgs e)
+        {
+            NieuweLeverancierWindow window = new NieuweLeverancierWindow();
+             if((bool)window.ShowDialog())UpdateListboxLeveranciers();
+            
+        }
+
+        private void btnAanpassenLeverancier_Click(object sender, RoutedEventArgs e)
+        {
+            Leverancier geselecteerdeLeverancier = (Leverancier)dgLeveranciers.SelectedItem;
+            NieuweLeverancierWindow window = new NieuweLeverancierWindow(geselecteerdeLeverancier);
+            geselecteerdeLeverancier = null;
+            if((bool)window.ShowDialog())UpdateListboxLeveranciers();
+            
+        }
+
+        private void btnNieuwProduct_Click(object sender, RoutedEventArgs e)
+        {
+            NieuwProductWindow window = new NieuwProductWindow();
+            if((bool)window.ShowDialog()) UpdateListboxProducten() ;
+        }
+
+
+        private void btnGenerateJsonTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgLeveranciers.SelectedItem != null)
+            {
+                Leverancier geselecteerdeLeverancier = (Leverancier)dgLeveranciers.SelectedItem;
+                var productTemplate = new{ EanCode = "", Eenheid = "", BTW = 0, Naam = "", Inkoopprijs=0, LeverancierID = geselecteerdeLeverancier.LeverancierID };
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+
+                using (StreamWriter file = File.CreateText($"{path}{geselecteerdeLeverancier.Naam}.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(file, productTemplate);
+                }
+                MessageBox.Show($"Template aangemaakt. Je kan de template terugvinden in de map {path}","Template aangemaakt");
+
+            }
+        }
+
+        private void btnAanpassenProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Product geselecteerdProduct = (Product)dgProducten.SelectedItem;
+            NieuwProductWindow window = new NieuwProductWindow(geselecteerdProduct);
+            geselecteerdProduct = null;
+            if ((bool)window.ShowDialog()) UpdateListboxProducten();
         }
     }
 }

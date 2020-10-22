@@ -31,7 +31,7 @@ namespace ProjectB
         public virtual ICollection<Leverancier> Leverancier { get; set; }
         public override string ToString()
         {
-            return $"{Postcode} {Gemeente1}";
+            return Gemeente1;
         }
     }
 }

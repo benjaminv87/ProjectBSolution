@@ -36,7 +36,6 @@ namespace ProjectB
         public virtual ICollection<Bestelling> Bestelling { get; set; }
         public virtual Gemeente Gemeente { get; set; }
 
-
         public override string ToString()
         {
             return $"{Voornaam} {Achternaam}";

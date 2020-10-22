@@ -20,12 +20,11 @@ namespace ProjectB
             this.Product = new HashSet<Product>();
         }
     
-        public int CategirueID { get; set; }
+        public int CategorieID { get; set; }
         public string CategorieNaam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
-
         public override string ToString()
         {
             return CategorieNaam;

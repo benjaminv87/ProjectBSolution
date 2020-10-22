@@ -26,9 +26,9 @@
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
-            <PropertyRef Name="CategirueID" />
+            <PropertyRef Name="CategorieID" />
           </Key>
-          <Property Name="CategirueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategorieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategorieNaam" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Functie">
@@ -68,7 +68,7 @@
           </Key>
           <Property Name="LeverancierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Contactpersoon" Type="nvarchar" MaxLength="50" />
-          <Property Name="Telefoonnummer" Type="int" />
+          <Property Name="Telefoonnummer" Type="nvarchar" MaxLength="50" />
           <Property Name="Emailadres" Type="nvarchar" MaxLength="50" />
           <Property Name="Straatnaam" Type="nvarchar" MaxLength="50" />
           <Property Name="Huisnummer" Type="int" />
@@ -99,6 +99,7 @@
           <Property Name="BTW" Type="int" />
           <Property Name="LeverancierID" Type="int" />
           <Property Name="CategorieID" Type="int" />
+          <Property Name="EanCode" Type="nchar" MaxLength="13" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -211,7 +212,7 @@
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categorie">
-              <PropertyRef Name="CategirueID" />
+              <PropertyRef Name="CategorieID" />
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategorieID" />
@@ -345,9 +346,9 @@
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
-            <PropertyRef Name="CategirueID" />
+            <PropertyRef Name="CategorieID" />
           </Key>
-          <Property Name="CategirueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategorieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategorieNaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Categorie" FromRole="Categorie" ToRole="Product" />
         </EntityType>
@@ -393,7 +394,7 @@
           </Key>
           <Property Name="LeverancierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Contactpersoon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telefoonnummer" Type="Int32" />
+          <Property Name="Telefoonnummer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Emailadres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Straatnaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Huisnummer" Type="Int32" />
@@ -429,6 +430,7 @@
           <Property Name="BTW" Type="Int32" />
           <Property Name="LeverancierID" Type="Int32" />
           <Property Name="CategorieID" Type="Int32" />
+          <Property Name="EanCode" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="BestellingProduct" Relationship="Self.FK_BestellingProduct_Product" FromRole="Product" ToRole="BestellingProduct" />
           <NavigationProperty Name="Categorie" Relationship="Self.FK_Product_Categorie" FromRole="Product" ToRole="Categorie" />
           <NavigationProperty Name="Leverancier" Relationship="Self.FK_Product_Leverancier" FromRole="Product" ToRole="Leverancier" />
@@ -508,7 +510,7 @@
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categorie">
-              <PropertyRef Name="CategirueID" />
+              <PropertyRef Name="CategorieID" />
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategorieID" />
@@ -686,7 +688,7 @@
           <EntitySetMapping Name="Categorie">
             <EntityTypeMapping TypeName="ProjectBModel.Categorie">
               <MappingFragment StoreEntitySet="Categorie">
-                <ScalarProperty Name="CategirueID" ColumnName="CategirueID" />
+                <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
                 <ScalarProperty Name="CategorieNaam" ColumnName="CategorieNaam" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -763,6 +765,7 @@
                 <ScalarProperty Name="BTW" ColumnName="BTW" />
                 <ScalarProperty Name="LeverancierID" ColumnName="LeverancierID" />
                 <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+                <ScalarProperty Name="EanCode" ColumnName="EanCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

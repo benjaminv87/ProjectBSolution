@@ -31,8 +31,8 @@
                 <StackPanel>
                     <DataGrid x:Name="dgProducten"/>
                     <WrapPanel HorizontalAlignment="Center">
-                        <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200"/>
-                        <Button x:Name="btnAanpassenProduct" Content="Product aanpassen" Width="200"/>
+                        <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200" Click="btnNieuwProduct_Click"/>
+                        <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen" Width="200"/>
                     </WrapPanel>
                 </StackPanel>
             </Expander>
@@ -43,9 +43,9 @@
                 <StackPanel>
                     <DataGrid x:Name="dgLeveranciers" Width="auto"/>
                     <WrapPanel HorizontalAlignment="Center">
-
-                        <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200"/>
-                        <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200"/>
+                        <Button x:Name="btnGenerateJsonTemplate" Content="Product Template genereren" Width="200" Click="btnGenerateJsonTemplate_Click"/>
+                        <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200" Click="btnNieuweLeverancier_Click"/>
+                        <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200" Click="btnAanpassenLeverancier_Click"/>
                     </WrapPanel>
                 </StackPanel>
             </Expander>

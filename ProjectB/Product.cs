@@ -28,6 +28,7 @@ namespace ProjectB
         public Nullable<int> BTW { get; set; }
         public Nullable<int> LeverancierID { get; set; }
         public Nullable<int> CategorieID { get; set; }
+        public string EanCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }

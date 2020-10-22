@@ -23,9 +23,12 @@ namespace ProjectB
         public NieuweKlantWindow()
         {
             InitializeComponent();
+            lblTitel.Content = "Nieuwe klant";
             geselecteerdeKlant = new Klant();
             isNieuweKlant = true;
             cbGemeente.SelectedIndex = 0;
+            geselecteerdeKlant.AangemaaktOp = DateTime.Now;
+
 
         }
         public ProjectBEntities ctx = new ProjectBEntities();
@@ -34,7 +37,7 @@ namespace ProjectB
         public NieuweKlantWindow(Klant aanTePassenKlant)
         {
             InitializeComponent();
-
+            lblTitel.Content = "Klant aanpassen"; 
             geselecteerdeKlant = ctx.Klant.Where(k => k.KlantID == aanTePassenKlant.KlantID).FirstOrDefault();
             isNieuweKlant = false;
             tbVoornaam.Text = geselecteerdeKlant.Voornaam;

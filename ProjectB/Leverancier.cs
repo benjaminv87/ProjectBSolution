@@ -23,7 +23,7 @@ namespace ProjectB
     
         public int LeverancierID { get; set; }
         public string Contactpersoon { get; set; }
-        public Nullable<int> Telefoonnummer { get; set; }
+        public string Telefoonnummer { get; set; }
         public string Emailadres { get; set; }
         public string Straatnaam { get; set; }
         public Nullable<int> Huisnummer { get; set; }
