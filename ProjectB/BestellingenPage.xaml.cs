@@ -64,7 +64,8 @@ namespace ProjectB
 
             Bestelling bestelling = ctx.Bestelling.Where(b => b.BestellingID == bestel.BestellingID).FirstOrDefault();
             string path = System.AppDomain.CurrentDomain.BaseDirectory;
-            object template = $@"{path}template.docx";
+            
+            object template = $@"{path}\..\..\Resources\template.docx"; 
             object SaveAs;
             Leverancier leverancier;
             Klant klant;
@@ -183,11 +184,11 @@ namespace ProjectB
                         }
 
                         double prijs = (double) (eenheidsPrijs * productenInBestelling[i].Aantal);
-                        this.FindAndReplace(wordApp, $"<id{i}>",productenInBestelling[i].ProductID );
+                        this.FindAndReplace(wordApp, $"<id{i}>",productenInBestelling[i].Product.EanCode );
                         this.FindAndReplace(wordApp, $"<omschrijving{i}>", productenInBestelling[i].Product.Naam);
                         this.FindAndReplace(wordApp, $"<q{i}>", productenInBestelling[i].Aantal.ToString());
-                        this.FindAndReplace(wordApp, $"<p{i}>", eenheidsPrijs);
-                        this.FindAndReplace(wordApp, $"<t{i}>", prijs );
+                        this.FindAndReplace(wordApp, $"<p{i}>", $"€ {eenheidsPrijs}");
+                        this.FindAndReplace(wordApp, $"<t{i}>", $"€ {prijs}" );
                         totaal += prijs;
                         if (productenInBestelling[i].Product.BTW == 21)
                         {
@@ -202,10 +203,10 @@ namespace ProjectB
 
 
 
-                this.FindAndReplace(wordApp, "<totaalEx>", Math.Round(totaal,2).ToString());
-                this.FindAndReplace(wordApp, "<BTW6>", Math.Round(totaal6,2).ToString());
-                this.FindAndReplace(wordApp, "<BTW21>",Math.Round( totaal21,2 ).ToString());
-                this.FindAndReplace(wordApp, "<totaal>", Math.Round((totaal+totaal21+totaal6),2).ToString());
+                this.FindAndReplace(wordApp, "<totaalEx>", $"€ {Math.Round(totaal,2).ToString()}");
+                this.FindAndReplace(wordApp, "<BTW6>", $"€ {Math.Round(totaal6,2).ToString()}");
+                this.FindAndReplace(wordApp, "<BTW21>", $"€ {Math.Round( totaal21,2 ).ToString()}");
+                this.FindAndReplace(wordApp, "<totaal>", $"€ {Math.Round((totaal+totaal21+totaal6),2).ToString()}");
 
             }
             else

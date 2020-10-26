@@ -31,5 +31,31 @@ namespace ProjectB
         public virtual Personeelslid Personeelslid { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }
+
+        public int totaalProductenBestelling
+        {
+            get
+            {
+                int totaal = 0;
+                foreach ( var item in BestellingProduct)
+                {
+                    totaal += (int)item.Aantal;
+                }
+                return totaal;
+            }
+        }
+        public double totaalPrijsBestelling
+        {
+            get
+            {
+                double totaal = 0;
+                foreach (var item in BestellingProduct)
+                {
+                    if (Klant != null) { totaal += (double)((item.Product.Inkoopprijs + (item.Product.Inkoopprijs / 100 * item.Product.Marge))*item.Aantal); }
+                    else { totaal += (double)((item.Product.Inkoopprijs) * item.Aantal); };
+                }
+                return totaal;
+            }
+        }
     }
 }
