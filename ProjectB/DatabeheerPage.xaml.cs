@@ -23,45 +23,36 @@ namespace ProjectB
     /// </summary>
     public partial class DatabeheerPage : Page
     {
-
         public DatabeheerPage()
         {
             InitializeComponent();
             UpdateListboxes();
         }
-
         public ProjectBEntities ctx = new ProjectBEntities();
-
-
-
         public void UpdateListboxes()
         {
             UpdateListboxKlanten();
             UpdateListboxLeveranciers();
             UpdateListboxProducten();
         }
-
         private void UpdateListboxProducten()
         {
             ctx = new ProjectBEntities();
             var producten = ctx.Product.Select(p => p);
             dgProducten.ItemsSource = producten.ToList();
         }
-
         private void UpdateListboxLeveranciers()
         {
             ctx = new ProjectBEntities();
             var leveranciers = ctx.Leverancier.Select(l => l);
             dgLeveranciers.ItemsSource = leveranciers.ToList();
         }
-
         private void UpdateListboxKlanten()
         {
             ctx = new ProjectBEntities();
             var klanten = ctx.Klant.Select(k => k);
             dgKlanten.ItemsSource = klanten.ToList();
         }
-
         private void btnNieuweKlant_Click(object sender, RoutedEventArgs e)
         {
             NieuweKlantWindow window = new NieuweKlantWindow();
@@ -70,7 +61,6 @@ namespace ProjectB
                 UpdateListboxKlanten();
             }
         }
-
         private void btnKlantAanpassen_Click(object sender, RoutedEventArgs e)
         {
             Klant geselecteerdeKlant = (Klant)dgKlanten.SelectedItem;
@@ -85,30 +75,24 @@ namespace ProjectB
                 }
             }
         }
-
         private void btnNieuweLeverancier_Click(object sender, RoutedEventArgs e)
         {
             NieuweLeverancierWindow window = new NieuweLeverancierWindow();
              if((bool)window.ShowDialog())UpdateListboxLeveranciers();
             
         }
-
         private void btnAanpassenLeverancier_Click(object sender, RoutedEventArgs e)
         {
             Leverancier geselecteerdeLeverancier = (Leverancier)dgLeveranciers.SelectedItem;
             NieuweLeverancierWindow window = new NieuweLeverancierWindow(geselecteerdeLeverancier);
             geselecteerdeLeverancier = null;
-            if((bool)window.ShowDialog())UpdateListboxLeveranciers();
-            
+            if((bool)window.ShowDialog())UpdateListboxLeveranciers();   
         }
-
         private void btnNieuwProduct_Click(object sender, RoutedEventArgs e)
         {
             NieuwProductWindow window = new NieuwProductWindow();
             if((bool)window.ShowDialog()) UpdateListboxProducten() ;
         }
-
-
         private void btnGenerateJsonTemplate_Click(object sender, RoutedEventArgs e)
         {
             if (dgLeveranciers.SelectedItem != null)
@@ -126,7 +110,6 @@ namespace ProjectB
 
             }
         }
-
         private void btnAanpassenProduct_Click(object sender, RoutedEventArgs e)
         {
             Product geselecteerdProduct = (Product)dgProducten.SelectedItem;

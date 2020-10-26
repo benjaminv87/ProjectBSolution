@@ -29,7 +29,6 @@ namespace ProjectB
             lbLeverancier.ItemsSource = ctx.Leverancier.Select(l => l).ToList();
             cbCategorie.ItemsSource = ctx.Categorie.Select(c => c).ToList();
         }
-
         public NieuwProductWindow(Product Product)
         {
             InitializeComponent();
@@ -44,11 +43,9 @@ namespace ProjectB
             lbLeverancier.SelectedItem = geselecteerdeLeverancier;
 
         }
-
         public bool isNieuwProduct;
         public ProjectBEntities ctx = new ProjectBEntities();
         public Product geselecteerdProduct = new Product();
-
         private void btnBestandLaden_Click(object sender, RoutedEventArgs e)
         {
 
@@ -88,7 +85,6 @@ namespace ProjectB
                 lbLeverancier.SelectedItem = geselecteerdeLeverancier;
             }
         }
-
         private void btnOpslaan_Click(object sender, RoutedEventArgs e)
         {
             geselecteerdProduct.Naam = tbNaam.Text;
@@ -104,12 +100,10 @@ namespace ProjectB
             DialogResult = true;
             this.Close();
         }
-
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void tbEancode_TextChanged(object sender, TextChangedEventArgs e)
         {
             string eancode = tbEancode.Text;

@@ -1,9 +1,17 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Application = Microsoft.Office.Interop.Word.Application;
+using System.Runtime.InteropServices;
+using System.IO;
+using System.Reflection;
+using Word = Microsoft.Office.Interop.Word;
+
 
 namespace ProjectB
 {
@@ -23,5 +31,6 @@ namespace ProjectB
                 return builder.ToString();
             }
         }
+
     }
 }

@@ -37,6 +37,13 @@ namespace ProjectB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
 
+        public string Adres
+        {
+            get
+            {
+                return $"{Straatnaam} {Huisnummer} {Bus}";
+            }
+        }
         public override string ToString()
         {
             return Naam;

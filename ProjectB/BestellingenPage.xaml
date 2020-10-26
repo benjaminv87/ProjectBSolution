@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjectB"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="BestellingenPage">
+      Title="BestellingenPage" Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,12 +23,18 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <StackPanel x:Name="spBestellingKlant">
                 <TextBlock Text="Bestellingen Klanten"/>
-                <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
+                <WrapPanel>
+                    <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
+                    <Button Content="print Factuur" x:Name="btnPrintFactuur" Click="btnPrintFactuur_Click"/>
+                </WrapPanel>
                 <DataGrid x:Name="dgBestellingenKlant"/>
             </StackPanel>
             <StackPanel x:Name="spBestellingLeverancier">
                 <TextBlock Text="Bestellingen Leveranciers"/>
-                <Button Content="Nieuwe bestelling Leverancier" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
+                <WrapPanel>
+                    <Button Content="Nieuwe bestelling Leverancier" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
+                    <Button Content="print Bestelbon" x:Name="btnPrintBestelbon" Click="btnPrintBestelbon_Click"/>
+                </WrapPanel>
                 <DataGrid x:Name="dgBestellingenLeveranciers"/>
             </StackPanel>
         </StackPanel>

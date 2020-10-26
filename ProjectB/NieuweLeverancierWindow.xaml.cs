@@ -28,7 +28,6 @@ namespace ProjectB
             geselecteerdeLeverancier = new Leverancier();
             cbGemeente.SelectedIndex = 0;
         }
-
         public NieuweLeverancierWindow(Leverancier aanTePassen)
         {
             InitializeComponent();
@@ -39,18 +38,15 @@ namespace ProjectB
             tbNaam.Text = geselecteerdeLeverancier.Naam;
             tbContactpersoon.Text = geselecteerdeLeverancier.Contactpersoon;
             tbStraatnaam.Text = geselecteerdeLeverancier.Straatnaam;
-
-            tbHuisnummer.Text = geselecteerdeLeverancier.Huisnummer.ToString();
+           tbHuisnummer.Text = geselecteerdeLeverancier.Huisnummer.ToString();
             tbPostcode.Text = geselecteerdeLeverancier.Gemeente.Postcode.ToString();
             tbTelefoonnumer.Text = geselecteerdeLeverancier.Telefoonnummer.ToString();
             tbEmail.Text = geselecteerdeLeverancier.Emailadres;
             cbGemeente.SelectedItem = ctx.Gemeente.Where(g => g.PostcodeID == geselecteerdeLeverancier.PostcodeID).FirstOrDefault();
         }
-
         public ProjectBEntities ctx = new ProjectBEntities();
         public bool isNieuweLeverancier;
         public Leverancier geselecteerdeLeverancier;
-
         private void btnOpslaan_Click(object sender, RoutedEventArgs e)
         {
             geselecteerdeLeverancier.Naam = tbNaam.Text;
@@ -73,12 +69,10 @@ namespace ProjectB
 
 
         }
-
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void tbPostcode_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -87,7 +81,6 @@ namespace ProjectB
             cbGemeente.SelectedIndex = 0;
 
         }
-
         private void cbGemeente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tbPostcode.IsSelectionActive == false)

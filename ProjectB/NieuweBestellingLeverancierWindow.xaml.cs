@@ -29,7 +29,6 @@ namespace ProjectB
             newOrder.PersoneelslidID = ingelogdPersoneelslid.PersoneelslidID;
             toLeverancier();
         }
-
         public Personeelslid ingelogdPersoneelslid;
         public Brush defaultBackground;
         public ProjectBEntities ctx = new ProjectBEntities();
@@ -37,9 +36,6 @@ namespace ProjectB
         public List<Leverancier> filterLijst = new List<Leverancier>();
         public GridLength autoHeight = new GridLength(1.0, GridUnitType.Star);
         public Bestelling newOrder = new Bestelling();
-
-
-
         private void tbFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (tbFilter.Text != string.Empty)
@@ -75,22 +71,18 @@ namespace ProjectB
             newOrder.LeverancierID = geselecteerdeLeverancier.LeverancierID;
             toProduct();
         }
-
         private void btnLeverancier_Click(object sender, RoutedEventArgs e)
         {
             toLeverancier();
         }
-
         private void btnProduct_Click(object sender, RoutedEventArgs e)
         {
             toProduct();
         }
-
         private void btnWinkelkar_Click(object sender, RoutedEventArgs e)
         {
             toWinkelkar();
         }
-
         private void toLeverancier()
         {
             expand(btnLeverancier);
@@ -110,7 +102,6 @@ namespace ProjectB
             rowWinkelkar.Height = autoHeight;
             lbWinkelwagen.ItemsSource = newOrder.BestellingProduct.ToList();
         }
-
         private void expand(Button sender)
         {
             collapseButtons();
@@ -122,7 +113,6 @@ namespace ProjectB
             thickness.Bottom = 0;
             sender.BorderThickness = thickness;
         }
-
         private void collapseButtons()
         {
             Thickness volleBorder = new Thickness();
@@ -143,36 +133,30 @@ namespace ProjectB
             rowProducten.Height = GridLength.Auto;
             rowWinkelkar.Height = GridLength.Auto;
         }
-
         private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
         private void lbCategorieen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Categorie selectedCat = (Categorie)lbCategorieen.SelectedItem;
 
             lbProducten.ItemsSource = ctx.Product.Where(p => p.Categorie.CategorieNaam == selectedCat.CategorieNaam).ToList();
         }
-
         private void btnToLeverancier_Click(object sender, RoutedEventArgs e)
         {
             toLeverancier();
         }
-
         private void btnToWinkewagen_Click(object sender, RoutedEventArgs e)
         {
             toWinkelkar();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
             int tag = Convert.ToInt32(((Button)sender).Tag);
             AddToBestelling(sender, tag);
         }
-
         public void AddToBestelling(object sender, int id)
         {
             Button button = (Button)sender;
@@ -186,18 +170,13 @@ namespace ProjectB
             ctx.Bestelling.Add(newOrder);
             MessageBox.Show($"Product {bestellingProduct.Product} aantal:{bestellingProduct.Aantal.ToString()}");
         }
-
-
         private void ButtonVerwijderen_Click(object sender, RoutedEventArgs e)
         {
             int bestellingProductID = Convert.ToInt32((sender as Button).Tag);
             newOrder.BestellingProduct.Remove(newOrder.BestellingProduct.Where(bp => bp.BestellingProductID == bestellingProductID).FirstOrDefault());
             lbWinkelwagen.ItemsSource = null;
             lbWinkelwagen.ItemsSource = newOrder.BestellingProduct.ToList();
-
-
         }
-
         private void btnBestellingBevestigen_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Wil je deze bestelling doorvoeren?", "Bestelling bevestigen", MessageBoxButton.YesNo);
