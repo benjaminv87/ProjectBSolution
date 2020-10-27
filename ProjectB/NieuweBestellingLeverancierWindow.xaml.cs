@@ -57,7 +57,6 @@ namespace ProjectB
             else
             {
                 lbFilter.ItemsSource = leveranciersLijst.ToList();
-                lbFilter.Visibility = Visibility.Collapsed;
             }
         }
         private void lbFilter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -86,6 +85,7 @@ namespace ProjectB
         private void toLeverancier()
         {
             expand(btnLeverancier);
+            lbFilter.ItemsSource = leveranciersLijst.ToList();
             spLeverancier.Visibility = Visibility.Visible;
             rowLeveranciers.Height = autoHeight;
         }
@@ -187,5 +187,7 @@ namespace ProjectB
                 this.Close();
             }
         }
+
+
     }
 }

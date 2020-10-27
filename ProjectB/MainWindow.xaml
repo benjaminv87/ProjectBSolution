@@ -5,30 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="540" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" MinHeight="450" MinWidth="540" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
     <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.3"/>
-        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
-        </Grid.ColumnDefinitions>
+        <DockPanel>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
+        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="1" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+                    <Button x:Name="btnDatabeheer" Content="DATABEHEER" Click="btnDatabeheer_Click" Style="{StaticResource MenuButton}"/>
+                    <Button x:Name="btnOverzicht" Content="OVERZICHT" Click="btnOverzicht_Click" Style="{StaticResource MenuButton}"/>
+                    <Button x:Name="btnBestellingen" Content="BESTELLINGEN" Click="btnBestellingen_Click" Style="{StaticResource MenuButton}"/>
+                    <Button x:Name="btnGebruikers" Content="GEBRUIKERS" Click="btnGebruikers_Click" Style="{StaticResource MenuButton}"/>
+                </StackPanel>
+            </Border>
+            <Frame  Grid.Row="0" Grid.Column="1" x:Name="Main" NavigationUIVisibility="Hidden" Background="White"/>
+        </Grid>
+    </Grid>
 
-        <WrapPanel Grid.Row="1" Grid.Column="1" >
-                <Button x:Name="btnDatabeheer" Content="Databeheer" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnDatabeheer_Click" />
-                <Button x:Name="btnOverzicht" Content="Overzicht" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnOverzicht_Click" />
-                <Button x:Name="btnBestellingen" Content="Bestellingen" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnBestellingen_Click" />
-                <Button x:Name="btnGebruikers" Content="Gebruikers" FontSize="18" HorizontalAlignment="Center" Background="#555555" Foreground="#fbf7f0" Width="120" Click="btnGebruikers_Click" />
-            </WrapPanel>
-        
-            <Frame  Grid.Row="2" Grid.Column="1" x:Name="Main" Background="White" NavigationUIVisibility="Hidden" />
-            </Grid>
 </Window>

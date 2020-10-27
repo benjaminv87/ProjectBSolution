@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnNieuweWerknemer" Content="Nieuwe gebruiker" Grid.Column="1" Grid.Row="1" Click="btnNieuweWerknemer_Click" Margin="0,20,0,20"/>
+        <Button x:Name="btnNieuweWerknemer" Content="Nieuwe gebruiker" Grid.Column="1" Grid.Row="1" Click="btnNieuweWerknemer_Click" />
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <DataGrid x:Name="dgGebruikers" AutoGenerateColumns="False">
                 <DataGrid.Columns>

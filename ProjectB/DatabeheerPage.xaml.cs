@@ -26,6 +26,9 @@ namespace ProjectB
         public DatabeheerPage()
         {
             InitializeComponent();
+            spProducten.Visibility = Visibility.Visible;
+            spLeveranciers.Visibility = Visibility.Collapsed;
+            spKlanten.Visibility = Visibility.Collapsed;
             UpdateListboxes();
         }
         public ProjectBEntities ctx = new ProjectBEntities();
@@ -116,6 +119,27 @@ namespace ProjectB
             NieuwProductWindow window = new NieuwProductWindow(geselecteerdProduct);
             geselecteerdProduct = null;
             if ((bool)window.ShowDialog()) UpdateListboxProducten();
+        }
+
+        private void btnProducten_Click(object sender, RoutedEventArgs e)
+        {
+            spProducten.Visibility = Visibility.Visible;
+            spLeveranciers.Visibility = Visibility.Collapsed;
+            spKlanten.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnLeveranciers_Click(object sender, RoutedEventArgs e)
+        {
+            spLeveranciers.Visibility = Visibility.Visible;
+            spProducten.Visibility = Visibility.Collapsed;
+            spKlanten.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnKlanten_Click(object sender, RoutedEventArgs e)
+        {
+            spKlanten.Visibility = Visibility.Visible;
+            spProducten.Visibility = Visibility.Collapsed;
+            spLeveranciers.Visibility = Visibility.Collapsed;
         }
     }
 }

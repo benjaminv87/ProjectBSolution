@@ -6,26 +6,24 @@
         xmlns:local="clr-namespace:ProjectB"
         xmlns:cal="http://www.caliburnproject.org" x:Class="ProjectB.NieuweBestellingWindow"
         mc:Ignorable="d"
-        Title="NieuweBestellingWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
+        Title="NieuweBestellingWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="20"/>
+        <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
-        </Grid.Background>
-        <DockPanel Background="#fbf7f0">
-            <Button Content="X" x:Name="btnCloseWindow" IsHitTestVisible="True" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top" Click="btnCloseWindow_Click" BorderThickness="0" cal:Bind.AtDesignTime="True" />
+
+        <DockPanel>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
         </DockPanel>
         <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width="auto" Height="auto"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
-            <Grid>
+            <Grid Style="{StaticResource Textbox }">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition x:Name="rowKlanten" Height="auto"/>
@@ -35,7 +33,7 @@
                     <RowDefinition x:Name="rowWinkelkar" Height="auto"/>
 
                 </Grid.RowDefinitions>
-                <Button x:Name="btnKlant" Grid.Row="0" Content="KLANT" Click="btnKlant_Click"/>
+                <Button x:Name="btnKlant" Grid.Row="0" Content="KLANT" Click="btnKlant_Click" Style="{StaticResource CustomExpander}"/>
                 <StackPanel x:Name="spKlant" Grid.Row="1" Visibility="Collapsed">
                     <WrapPanel>
                         <TextBlock Text="Klantnaam:"/>
@@ -69,9 +67,9 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-                <Button x:Name="btnProduct" Grid.Row="2" Content="PRODUCTEN" Click="btnProduct_Click"/>
+                <Button x:Name="btnProduct" Grid.Row="2" Content="PRODUCTEN" Click="btnProduct_Click" Style="{StaticResource CustomExpander}"/>
                 <StackPanel x:Name="spProduct" Grid.Row="3">
-                    <Grid>
+                    <Grid Style="{StaticResource Textbox }">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="auto"/>
@@ -126,7 +124,7 @@
                     </Grid>
 
                 </StackPanel>
-                <Button x:Name="btnWinkelkar"  Grid.Row="4" Content="WINKELKAR" Click="btnWinkelkar_Click"/>
+                <Button x:Name="btnWinkelkar"  Grid.Row="4" Content="WINKELKAR" Click="btnWinkelkar_Click" Style="{StaticResource CustomExpander}"/>
                 <DockPanel x:Name="spWinkelkar" Grid.Row="5" Visibility="Collapsed">
                     <ListBox x:Name="lbWinkelwagen" DockPanel.Dock="Top">
                         <ListBox.ItemTemplate>

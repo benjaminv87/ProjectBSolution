@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="2" Grid.Column="1">
             <StackPanel x:Name="spBestellingKlant">
-                <TextBlock Text="Bestellingen Klanten"/>
+                <TextBlock Text="Bestellingen Klanten" Style="{StaticResource H1}" IsHitTestVisible="True"/>
                 <WrapPanel>
                     <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
                     <Button Content="print Factuur" x:Name="btnPrintFactuur" Click="btnPrintFactuur_Click"/>
@@ -30,9 +30,9 @@
                 <DataGrid x:Name="dgBestellingenKlant"/>
             </StackPanel>
             <StackPanel x:Name="spBestellingLeverancier">
-                <TextBlock Text="Bestellingen Leveranciers"/>
+                <TextBlock Text="Bestellingen Leveranciers"  Style="{StaticResource H1}"/>
                 <WrapPanel>
-                    <Button Content="Nieuwe bestelling Leverancier" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
+                    <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
                     <Button Content="print Bestelbon" x:Name="btnPrintBestelbon" Click="btnPrintBestelbon_Click"/>
                 </WrapPanel>
                 <DataGrid x:Name="dgBestellingenLeveranciers"/>

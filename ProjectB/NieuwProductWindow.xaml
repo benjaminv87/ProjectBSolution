@@ -5,20 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="NieuwProductWindow" Height="450" Width="800">
+        Title="NieuwProductWindow" Height="450" Width="800" Style="{StaticResource Window}">
 
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
     <Grid >
-        <Grid.Background>
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
-        </Grid.Background>
-
-        <Border Margin="0,40,0,40" Background="White" Width=" 600" VerticalAlignment="Top"  >
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Button x:Name="btnClose"  Style="{StaticResource CloseButton}" Click="btnClose_Click"/>
+        </DockPanel>
+        <Border Margin="0,40,0,40" Width=" 600" VerticalAlignment="Top" Grid.Row="1" >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-                <Grid >
+                <Grid Style="{StaticResource Textbox}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20" />
                         <ColumnDefinition Width="auto"/>
@@ -43,7 +50,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="lblTitel" Content="Titel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28" Foreground="#555555" FontWeight="Bold"/>
+                    <TextBlock x:Name="lblTitel" Text="Titel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource H1}"/>
 
                     <Button x:Name="btnBestandLaden" Grid.Row="1" Grid.Column="1" Content="Bestand laden" Click="btnBestandLaden_Click"/>
                    

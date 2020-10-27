@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="NieuweKlantWindow" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
-
+        Title="NieuweKlantWindow" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
     <Grid >
-        <Grid.Background>
-
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
-        </Grid.Background>
-
-        <Border Margin="0,40,0,40" Background="White" Width=" 600" VerticalAlignment="Top"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="670"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
+        </DockPanel>
+        <Border Grid.Row="1" Margin="0,40,0,40" Background="White" Width=" 600" VerticalAlignment="Top"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-                <Grid >
+                <Grid Style="{StaticResource Textbox}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="auto"/>

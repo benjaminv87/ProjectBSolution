@@ -5,42 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="LoginWindow" MinHeight="490" MinWidth="490"  WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
+        Title="LoginWindow" MinHeight="490" MinWidth="490"  WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="20"/>
+        <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
-        </Grid.Background>
         <DockPanel>
-            <DockPanel.Background>
-                <SolidColorBrush Color="#fbf7f0"/>
-            </DockPanel.Background>
-            <Button Content="X" x:Name="btnCloseWindow" HorizontalAlignment="Right" Width="20" Click="btnCloseWindow_Click"/>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
         </DockPanel>
-        <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width=" 400" Height="380"  >
+        <Border Grid.Row="1" Background="White" Width=" 400" Height="380"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
             <StackPanel>
 
-                <Label Content="Login" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="28" Foreground="#555555" FontWeight="Bold"/>
-                <Grid>
+                <TextBlock Text="LOGIN" Margin="0,40,0,0" Style="{StaticResource H1}"/>
+                <Grid Style="{StaticResource Textbox}">
                     <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbUsername_TextChanged" Foreground="#555555"/>
                     <TextBlock x:Name="tblUsername" Text="Gebruikersnaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
                 </Grid>
-                <Grid>
+                <Grid Style="{StaticResource Textbox}">
                     <PasswordBox PasswordChar="*" x:Name="pwbPass" HorizontalContentAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" PasswordChanged="pwbPass_PasswordChanged" Foreground="#555555"/>
                     <TextBlock x:Name="tblPass" Text="Wachtwoord" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
                 </Grid>
 
-                <Button x:Name="btnLogin" Click="btnLogin_Click" Content="Aanmelden" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5"  />
+                <Button x:Name="btnLogin" Click="btnLogin_Click" Content="Aanmelden"/>
             </StackPanel>
         </Border>
     </Grid>

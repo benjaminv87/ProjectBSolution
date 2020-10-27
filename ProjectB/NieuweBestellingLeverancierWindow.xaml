@@ -5,26 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="NieuweBestellingLeverancierWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="Transparent" AllowsTransparency="True">
+        Title="NieuweBestellingLeverancierWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="20"/>
+        <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <SolidColorBrush Color="#d9e4dd" Opacity="0.9"/>
-        </Grid.Background>
+
         <DockPanel Background="#fbf7f0">
-            <Button Content="X" x:Name="btnCloseWindow" IsHitTestVisible="True" HorizontalAlignment="Right" Width="20" Height="20" VerticalAlignment="Top" Click="btnCloseWindow_Click" BorderThickness="0" />
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}" />
         </DockPanel>
         <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width="auto" Height="auto"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
-            <Grid>
+            <Grid Style="{StaticResource Textbox}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition x:Name="rowLeveranciers" Height="auto"/>
@@ -34,17 +32,16 @@
                     <RowDefinition x:Name="rowWinkelkar" Height="auto"/>
 
                 </Grid.RowDefinitions>
-                <Button x:Name="btnLeverancier" Grid.Row="0" Content="LEVERANCIER" Click="btnLeverancier_Click"/>
+                <Button x:Name="btnLeverancier" Grid.Row="0" Content="LEVERANCIER" Click="btnLeverancier_Click" Style="{StaticResource CustomExpander}"/>
                 <StackPanel x:Name="spLeverancier" Grid.Row="1" Visibility="Collapsed">
                     <WrapPanel>
                         <TextBlock Text="Leverancier:"/>
                         <TextBox x:Name="tbFilter" TextChanged="tbFilter_TextChanged" Width="300"/>
                     </WrapPanel>
-                    <ListBox x:Name="lbFilter" MaxHeight="300" Visibility="Collapsed" MouseDoubleClick="lbFilter_MouseDoubleClick" >
+                    <ListBox x:Name="lbFilter" MaxHeight="300" MouseDoubleClick="lbFilter_MouseDoubleClick" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border CornerRadius="2" BorderThickness="1,1,1,1" BorderBrush="black" Width="300">
-                                    <StackPanel>
+                                <StackPanel>
                                         <WrapPanel>
                                             <TextBlock Text="Id: "/>
                                             <TextBlock Text="{Binding LeverancierID}"/>
@@ -63,14 +60,14 @@
                                             <TextBlock Text="{Binding Adres}"/>
                                         </WrapPanel>
                                     </StackPanel>
-                                </Border>
+                                
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-                <Button x:Name="btnProduct" Grid.Row="2" Content="PRODUCTEN" Click="btnProduct_Click"/>
+                <Button x:Name="btnProduct" Grid.Row="2" Content="PRODUCTEN" Click="btnProduct_Click" Style="{StaticResource CustomExpander}"/>
                 <StackPanel x:Name="spProduct" Grid.Row="3">
-                    <Grid>
+                    <Grid Style="{StaticResource Textbox }">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition Width="auto"/>
@@ -125,7 +122,7 @@
                     </Grid>
 
                 </StackPanel>
-                <Button x:Name="btnWinkelkar"  Grid.Row="4" Content="WINKELKAR" Click="btnWinkelkar_Click"/>
+                <Button x:Name="btnWinkelkar"  Grid.Row="4" Content="WINKELKAR" Click="btnWinkelkar_Click" Style="{StaticResource CustomExpander}"/>
                 <DockPanel x:Name="spWinkelkar" Grid.Row="5" Visibility="Collapsed">
                     <ListBox x:Name="lbWinkelwagen" DockPanel.Dock="Top">
                         <ListBox.ItemTemplate>

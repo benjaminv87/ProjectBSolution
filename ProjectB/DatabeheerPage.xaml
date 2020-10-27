@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DatabeheerPage" Background="White">
 
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
@@ -22,45 +22,36 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
+            <WrapPanel>
+                <Button x:Name="btnProducten" Content="Producten" Click="btnProducten_Click" />
+                <Button x:Name="btnLeveranciers" Content="Leveranciers" Click="btnLeveranciers_Click" />
+                <Button x:Name="btnKlanten" Content="Klanten" Click="btnKlanten_Click" />
+            </WrapPanel>
+            <StackPanel x:Name="spProducten">
+                <DataGrid x:Name="dgProducten"/>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200" Click="btnNieuwProduct_Click"/>
+                    <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen" Width="200"/>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel x:Name="spLeveranciers">
+                <DataGrid x:Name="dgLeveranciers" Width="auto"/>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="btnGenerateJsonTemplate" Content="Product Template genereren" Width="200" Click="btnGenerateJsonTemplate_Click"/>
+                    <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200" Click="btnNieuweLeverancier_Click"/>
+                    <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200" Click="btnAanpassenLeverancier_Click"/>
+                </WrapPanel>
+            </StackPanel>
 
-            <Expander ExpandDirection="Down">
-                <Expander.Header>
-                    <TextBlock Text="Producten"/>
 
-                </Expander.Header>
-                <StackPanel>
-                    <DataGrid x:Name="dgProducten"/>
-                    <WrapPanel HorizontalAlignment="Center">
-                        <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200" Click="btnNieuwProduct_Click"/>
-                        <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen" Width="200"/>
-                    </WrapPanel>
-                </StackPanel>
-            </Expander>
-            <Expander ExpandDirection="Down">
-                <Expander.Header>
-                    <TextBlock Text="Leveranciers"/>
-                </Expander.Header>
-                <StackPanel>
-                    <DataGrid x:Name="dgLeveranciers" Width="auto"/>
-                    <WrapPanel HorizontalAlignment="Center">
-                        <Button x:Name="btnGenerateJsonTemplate" Content="Product Template genereren" Width="200" Click="btnGenerateJsonTemplate_Click"/>
-                        <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200" Click="btnNieuweLeverancier_Click"/>
-                        <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200" Click="btnAanpassenLeverancier_Click"/>
-                    </WrapPanel>
-                </StackPanel>
-            </Expander>
-            <Expander x:Name="expKlanten" ExpandDirection="Down">
-                <Expander.Header>
-                    <TextBlock  Text="Klanten"/>
-                </Expander.Header>
-                <StackPanel>
-                    <DataGrid x:Name="dgKlanten" Width="auto" />
-                    <WrapPanel HorizontalAlignment="Center">
-                        <Button x:Name="btnNieuweKlant" Content="Nieuwe Klant" Click="btnNieuweKlant_Click"/>
-                        <Button x:Name="btnKlantAanpassen" Content="Klant aanpassen" Click="btnKlantAanpassen_Click" />
-                    </WrapPanel>
-                </StackPanel>
-            </Expander>
+            <StackPanel x:Name="spKlanten">
+                <DataGrid x:Name="dgKlanten" Width="auto" />
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="btnNieuweKlant" Content="Nieuwe Klant" Click="btnNieuweKlant_Click"/>
+                    <Button x:Name="btnKlantAanpassen" Content="Klant aanpassen" Click="btnKlantAanpassen_Click" />
+                </WrapPanel>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>
