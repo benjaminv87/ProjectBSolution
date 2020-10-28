@@ -7,47 +7,65 @@
         mc:Ignorable="d"
         Title="NieweWerknemerWindow" WindowStartupLocation="CenterScreen" Style="{StaticResource  Window}">
 
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
 
-
-    <Grid Height="690" Style="{StaticResource background}">
+    <Grid Style="{StaticResource background}">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="670"/>
         </Grid.RowDefinitions>
-        <DockPanel>
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
-        </DockPanel>
-        <Border Grid.Row="1" Margin="0,40,0,0" Background="White" MinWidth=" 480" MaxWidth="480" Width="480" Height="600" VerticalAlignment="Top"  >
+        <Border>
             <Border.Effect>
-                <DropShadowEffect/>
+                <DropShadowEffect ShadowDepth="1"/>
             </Border.Effect>
-            <StackPanel>
+            <DockPanel>
+                <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
+            </DockPanel>
+        </Border>
 
-                <TextBlock Text="Gebruiker Toevoegen" Width="480" HorizontalAlignment="Center" Style="{StaticResource H1}"/>
+        <Border Margin="0,40,0,40" Width=" 600" VerticalAlignment="Top" Grid.Row="1">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="12"/>
+            </Border.Effect>
 
-                <Grid Style="{StaticResource Textbox}">
-                    <TextBox x:Name="tbVoornaam"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbVoornaam_TextChanged" Foreground="#555555"/>
-                    <TextBlock x:Name="tblVoornaam" Text="Voornaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
-                </Grid>
-                <Grid Style="{StaticResource Textbox}">
-                    <TextBox x:Name="tbFamilienaam"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbFamilienaam_TextChanged" Foreground="#555555"/>
-                    <TextBlock x:Name="tblFamilienaam" Text="Familienaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
-                </Grid>
-                <WrapPanel HorizontalAlignment="Center" Width="auto">
-                    <Label Content="Functie :" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                    <ComboBox x:Name="cbFunctie" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="200" Margin=" 0,20,0,20" Padding="0,10,0,10"/>
-                </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <Label Content="username" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                    <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
-                </WrapPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <Button x:Name="btCreateUser" Click="btCreateUser_Click"  Content="Aanmaken"  Margin="20,20,20,20" />
-                    <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel"  Margin="20,20,20,20"  />
 
-                </WrapPanel>
-            </StackPanel>
+            <Grid Style="{StaticResource Textbox}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Gebruiker Toevoegen" Width="600" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource H1}"/>
+                <ScrollViewer Grid.Row="1">
+
+                    <StackPanel>
+                    <Grid Style="{StaticResource Textbox}">
+                        <TextBox x:Name="tbVoornaam"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbVoornaam_TextChanged" Foreground="#555555"/>
+                        <TextBlock x:Name="tblVoornaam" Text="Voornaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
+                    </Grid>
+                    <Grid Style="{StaticResource Textbox}">
+                        <TextBox x:Name="tbFamilienaam"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbFamilienaam_TextChanged" Foreground="#555555"/>
+                        <TextBlock x:Name="tblFamilienaam" Text="Familienaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>
+                    </Grid>
+                    <WrapPanel HorizontalAlignment="Center" Width="auto">
+                        <Label Content="Functie :" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <ComboBox x:Name="cbFunctie" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="200" Margin=" 0,20,0,20" Padding="0,10,0,10"/>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Label Content="username" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                    </WrapPanel>
+                    <WrapPanel HorizontalAlignment="Center">
+                        <Button x:Name="btCreateUser" Click="btCreateUser_Click"  Content="Aanmaken"  Margin="20,20,20,20" />
+                        <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel"  Margin="20,20,20,20"  />
+
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+               
+            </Grid>
         </Border>
     </Grid>
 </Window>

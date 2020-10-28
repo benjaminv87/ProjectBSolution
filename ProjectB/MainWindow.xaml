@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="540" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
+        Title="MainWindow" MinHeight="450" MinWidth="990" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
@@ -14,9 +14,14 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Border>
+            <Border.Effect>
+            <DropShadowEffect ShadowDepth="1"/>
+        </Border.Effect>
         <DockPanel >
             <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
         </DockPanel>
+        </Border>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

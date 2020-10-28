@@ -26,21 +26,39 @@ namespace ProjectB
         public BestellingenPage(Personeelslid ingelogdPersoneelslid)
         {
             InitializeComponent();
+            this.ingelogdPersoneelslid = ingelogdPersoneelslid;
+
+
+            switch (ingelogdPersoneelslid.FunctieID)
+            {
+                case (1):
+                    spBestellingLeverancier.Visibility = Visibility.Collapsed;
+                    spBestellingKlant.Visibility = Visibility.Visible;
+
+                    btnBestellingKlant.IsEnabled = true;
+                    btnBestellingLeveranciers.IsEnabled = true;
+                    break;
+
+                case (2):
+                    spBestellingLeverancier.Visibility = Visibility.Visible;
+                    spBestellingKlant.Visibility = Visibility.Visible; 
+                    btnBestellingKlant.IsEnabled = false;
+                    btnBestellingLeveranciers.IsEnabled = true;
+                    break;
+
+                case (3):
+                    spBestellingLeverancier.Visibility = Visibility.Collapsed;
+                    spBestellingKlant.Visibility = Visibility.Visible;
+                    btnBestellingKlant.IsEnabled = true;
+                    btnBestellingLeveranciers.IsEnabled = false;
+                    break;
+            }
 
             var bestellingenKlanten = ctx.Bestelling.Where(b => b.KlantID != null);
             var bestellingenLeveranciers = ctx.Bestelling.Where(b => b.LeverancierID != null);
             dgBestellingenKlant.ItemsSource = bestellingenKlanten.ToList();
             dgBestellingenLeveranciers.ItemsSource = bestellingenLeveranciers.ToList();
-            this.ingelogdPersoneelslid = ingelogdPersoneelslid;
 
-            if (ingelogdPersoneelslid.FunctieID == 2)
-            {
-                spBestellingKlant.Visibility = Visibility.Collapsed;
-            }
-            else if (ingelogdPersoneelslid.FunctieID == 3)
-            {
-                spBestellingLeverancier.Visibility = Visibility.Collapsed;
-            }
         }
         public ProjectBEntities ctx = new ProjectBEntities();
         public Personeelslid ingelogdPersoneelslid;
@@ -227,14 +245,30 @@ namespace ProjectB
 
         private void btnPrintBestelbon_Click(object sender, RoutedEventArgs e)
         {
-            Bestelling bestelling = (Bestelling)dgBestellingenLeveranciers.SelectedItem;
-            CreateWordDocument(bestelling);
+            if( dgBestellingenLeveranciers.SelectedItem != null)
+            {
+                Bestelling bestelling = (Bestelling)dgBestellingenLeveranciers.SelectedItem;
+                CreateWordDocument(bestelling);
+                dgBestellingenLeveranciers.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show("Gelieve een bestelling te selecteren");
+            }
+
         }
 
         private void btnPrintFactuur_Click(object sender, RoutedEventArgs e)
         {
-            Bestelling bestelling = (Bestelling)dgBestellingenKlant.SelectedItem;
+            if (dgBestellingenKlant.SelectedItem != null)
+            {
+                Bestelling bestelling = (Bestelling)dgBestellingenKlant.SelectedItem;
             CreateWordDocument(bestelling);
+            }
+            else
+            {
+                MessageBox.Show("Gelieve een bestelling te selecteren");
+            }
         }
 
         private void btnBestellinLeveranciers_Click(object sender, RoutedEventArgs e)

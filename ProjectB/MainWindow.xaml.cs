@@ -30,7 +30,7 @@ namespace ProjectB
 
         private void btnDatabeheer_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new DatabeheerPage();
+            Main.Content = new DatabeheerPage(ingelogdPersoneelslid);
         }
 
         private void btnOverzicht_Click(object sender, RoutedEventArgs e)

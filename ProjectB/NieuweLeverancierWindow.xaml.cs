@@ -94,5 +94,10 @@ namespace ProjectB
         {
             this.Close();
         }
+
+        private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

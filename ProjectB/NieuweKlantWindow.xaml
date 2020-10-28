@@ -9,86 +9,95 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    <Grid >
+    <Grid Style="{StaticResource background}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="670"/>
         </Grid.RowDefinitions>
-        <DockPanel>
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
-        </DockPanel>
+        <Border>
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1"/>
+            </Border.Effect>
+            <DockPanel>
+                <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
+            </DockPanel>
+        </Border>
         <Border Grid.Row="1" Margin="0,40,0,40" Background="White" Width=" 600" VerticalAlignment="Top"  >
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-
-                <Grid Style="{StaticResource Textbox}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
+            <Grid Style="{StaticResource Textbox}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="lblTitel" Text="Klant toevoegen" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,20,0,0" Style="{StaticResource  H1}" />
+                <TextBlock Grid.Row="0"  Width="600" x:Name="lblTitel" Text="Klant toevoegen"  Style="{StaticResource  H1}" />
 
-                <Label Content="Voornaam :" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbVoornaam" Grid.Row="2" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-                <Label Content="Familienaam :" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbFamilienaam" Grid.Row="3" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
 
-                <Label Content="Straatnaam :" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbStraatnaam" Grid.Row="4" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                        <Label Content="Voornaam :" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbVoornaam" Grid.Row="2" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
-                <Label Content="Huisnummer :" HorizontalAlignment="Right"  Grid.Row="5" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbHuisnummer" Grid.Row="5" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                        <Label Content="Familienaam :" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbFamilienaam" Grid.Row="3" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
 
-                <Label Content="Postcode :" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbPostcode" Grid.Row="6" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbPostcode_TextChanged" Foreground="#555555"/>
+                        <Label Content="Straatnaam :" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbStraatnaam" Grid.Row="4" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
-                
-                <Label Content="Gemeente :" HorizontalAlignment="Right"  Grid.Row="7" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <ComboBox x:Name="cbGemeente" Grid.Row="7" Grid.Column="2" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" SelectionChanged="cbGemeente_SelectionChanged"/>
+                        <Label Content="Huisnummer :" HorizontalAlignment="Right"  Grid.Row="5" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbHuisnummer" Grid.Row="5" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
-                <Label Content="Telefoonnummer :" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbTelefoonnumer" Grid.Row="8" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
-
-                <Label Content="Emailadres :" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                <TextBox x:Name="tbEmail" Grid.Row="9" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
-                
-                <Label Content="Opmerking :" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,0" Padding="20,10,20,0"/>
-                <TextBox x:Name="tbOpmerking" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="auto" Margin=" 0,0,0,20" Padding="0,0,0,10" Foreground="#555555"/>
+                        <Label Content="Postcode :" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbPostcode" Grid.Row="6" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbPostcode_TextChanged" Foreground="#555555"/>
 
 
-                <WrapPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-                    <Button x:Name="btCreateCustomer" Click="btCreateCustomer_Click"  Content="Aanmaken" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20" />
-                    <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20"  />
-                </WrapPanel>
+                        <Label Content="Gemeente :" HorizontalAlignment="Right"  Grid.Row="7" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <ComboBox x:Name="cbGemeente" Grid.Row="7" Grid.Column="2" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" SelectionChanged="cbGemeente_SelectionChanged"/>
 
+                        <Label Content="Telefoonnummer :" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbTelefoonnumer" Grid.Row="8" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+
+                        <Label Content="Emailadres :" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
+                        <TextBox x:Name="tbEmail" Grid.Row="9" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+
+                        <Label Content="Opmerking :" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,0" Padding="20,10,20,0"/>
+                        <TextBox x:Name="tbOpmerking" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="auto" Margin=" 0,0,0,20" Padding="0,0,0,10" Foreground="#555555"/>
+
+
+                        <WrapPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                            <Button x:Name="btCreateCustomer" Click="btCreateCustomer_Click"  Content="Aanmaken" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20" />
+                            <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20"  />
+                        </WrapPanel>
+
+                    </Grid>
+                </ScrollViewer>
             </Grid>
-            </ScrollViewer>
-
         </Border>
-
     </Grid>
-
 </Window>

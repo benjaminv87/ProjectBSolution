@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
-        
+
         <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
             <WrapPanel>
                 <Button x:Name="btnProducten" Content="Producten" Click="btnProducten_Click" />

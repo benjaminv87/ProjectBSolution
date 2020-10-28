@@ -23,14 +23,57 @@ namespace ProjectB
     /// </summary>
     public partial class DatabeheerPage : Page
     {
-        public DatabeheerPage()
+        public DatabeheerPage(Personeelslid ingelogdPersoneelslid)
         {
             InitializeComponent();
-            spProducten.Visibility = Visibility.Visible;
-            spLeveranciers.Visibility = Visibility.Collapsed;
-            spKlanten.Visibility = Visibility.Collapsed;
+            this.ingelogdPersoneelslid = ingelogdPersoneelslid;
+
+            switch (ingelogdPersoneelslid.FunctieID)
+            {
+                case (1):
+                    spProducten.Visibility = Visibility.Visible;
+                    spLeveranciers.Visibility = Visibility.Collapsed;
+                    spKlanten.Visibility = Visibility.Collapsed;
+
+
+                    btnProducten.IsEnabled = true;
+                    btnLeveranciers.IsEnabled = true;
+                    btnKlanten.IsEnabled = true;
+
+                    break;
+
+                case (2):
+                    spProducten.Visibility = Visibility.Visible;
+                    spLeveranciers.Visibility = Visibility.Collapsed;
+                    spKlanten.Visibility = Visibility.Collapsed;
+
+                    btnNieuweKlant.IsEnabled = false;
+                    btnKlantAanpassen.IsEnabled = false;
+                    btnProducten.IsEnabled = true;
+                    btnLeveranciers.IsEnabled = true;
+                    btnKlanten.IsEnabled = false;
+
+                    break;
+
+                case (3):
+                    spProducten.Visibility = Visibility.Visible;
+                    spLeveranciers.Visibility = Visibility.Collapsed;
+                    spKlanten.Visibility = Visibility.Collapsed;
+
+
+                    btnNieuwProduct.IsEnabled = false;
+                    btnAanpassenProduct.IsEnabled = false;
+                    btnProducten.IsEnabled = true;
+                    btnLeveranciers.IsEnabled = false;
+                    btnKlanten.IsEnabled = true;
+
+                    break;
+            }
+
+
             UpdateListboxes();
         }
+        public Personeelslid ingelogdPersoneelslid;
         public ProjectBEntities ctx = new ProjectBEntities();
         public void UpdateListboxes()
         {

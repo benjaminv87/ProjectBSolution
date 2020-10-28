@@ -15,10 +15,14 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <DockPanel>
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
-        </DockPanel>
+        <Border>
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1"/>
+            </Border.Effect>
+            <DockPanel>
+                <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
+            </DockPanel>
+        </Border>
         <Border Grid.Row="1" Margin="20,20,20,20" Background="White" Width="auto" Height="auto"  >
             <Border.Effect>
                 <DropShadowEffect/>
