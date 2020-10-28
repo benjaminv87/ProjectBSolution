@@ -89,5 +89,10 @@ namespace ProjectB
                 tbPostcode.Text = geselecteerdeGemeente.Postcode.ToString();
             }
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

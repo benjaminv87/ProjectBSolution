@@ -236,5 +236,17 @@ namespace ProjectB
             Bestelling bestelling = (Bestelling)dgBestellingenKlant.SelectedItem;
             CreateWordDocument(bestelling);
         }
+
+        private void btnBestellinLeveranciers_Click(object sender, RoutedEventArgs e)
+        {
+            spBestellingLeverancier.Visibility = Visibility.Visible;
+            spBestellingKlant.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnBestellingKlant_Click(object sender, RoutedEventArgs e)
+        {
+            spBestellingLeverancier.Visibility = Visibility.Collapsed;
+            spBestellingKlant.Visibility = Visibility.Visible;
+        }
     }
 }

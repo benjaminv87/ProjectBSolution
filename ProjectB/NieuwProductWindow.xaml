@@ -10,7 +10,7 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    <Grid >
+    <Grid  Style="{StaticResource background}">
        
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

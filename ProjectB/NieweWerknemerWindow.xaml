@@ -9,7 +9,7 @@
 
 
 
-    <Grid Height="690">
+    <Grid Height="690" Style="{StaticResource background}">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -24,7 +24,7 @@
             </Border.Effect>
             <StackPanel>
 
-                <TextBlock Text="Gebruiker Toevoegen" Style="{StaticResource H1}"/>
+                <TextBlock Text="Gebruiker Toevoegen" Width="480" HorizontalAlignment="Center" Style="{StaticResource H1}"/>
 
                 <Grid Style="{StaticResource Textbox}">
                     <TextBox x:Name="tbVoornaam"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbVoornaam_TextChanged" Foreground="#555555"/>

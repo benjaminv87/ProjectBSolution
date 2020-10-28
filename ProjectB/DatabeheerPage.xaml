@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjectB"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DatabeheerPage" Background="White">
+      Title="DatabeheerPage" Background="{StaticResource altBG}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,6 +21,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
+        
         <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
             <WrapPanel>
                 <Button x:Name="btnProducten" Content="Producten" Click="btnProducten_Click" />
@@ -30,16 +31,16 @@
             <StackPanel x:Name="spProducten">
                 <DataGrid x:Name="dgProducten"/>
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button x:Name="btnNieuwProduct" Content="Nieuw product" Width="200" Click="btnNieuwProduct_Click"/>
-                    <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen" Width="200"/>
+                    <Button x:Name="btnNieuwProduct" Content="Nieuw product" Click="btnNieuwProduct_Click"/>
+                    <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="spLeveranciers">
                 <DataGrid x:Name="dgLeveranciers" Width="auto"/>
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button x:Name="btnGenerateJsonTemplate" Content="Product Template genereren" Width="200" Click="btnGenerateJsonTemplate_Click"/>
-                    <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier" Width="200" Click="btnNieuweLeverancier_Click"/>
-                    <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen" Width="200" Click="btnAanpassenLeverancier_Click"/>
+                    <Button x:Name="btnGenerateJsonTemplate" Content="Product Template" Click="btnGenerateJsonTemplate_Click"/>
+                    <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier"  Click="btnNieuweLeverancier_Click"/>
+                    <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen"  Click="btnAanpassenLeverancier_Click"/>
                 </WrapPanel>
             </StackPanel>
 
@@ -51,7 +52,6 @@
                     <Button x:Name="btnKlantAanpassen" Content="Klant aanpassen" Click="btnKlantAanpassen_Click" />
                 </WrapPanel>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </Page>

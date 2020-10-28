@@ -9,13 +9,13 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    <Grid>
+    <Grid Style="{StaticResource background}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <DockPanel>
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
         </DockPanel>
         <Border Grid.Row="1" Background="White" Width=" 400" Height="380"  >
             <Border.Effect>
@@ -23,7 +23,7 @@
             </Border.Effect>
             <StackPanel>
 
-                <TextBlock Text="LOGIN" Margin="0,40,0,0" Style="{StaticResource H1}"/>
+                <TextBlock Text="LOGIN" Padding="0,10" Width="400" Style="{StaticResource H1}"/>
                 <Grid Style="{StaticResource Textbox}">
                     <TextBox x:Name="tbUsername"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" TextChanged="tbUsername_TextChanged" Foreground="#555555"/>
                     <TextBlock x:Name="tblUsername" Text="Gebruikersnaam" IsHitTestVisible="False" TextAlignment="Center" FontSize="20" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#cdc9c3"/>

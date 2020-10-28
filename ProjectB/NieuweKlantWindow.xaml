@@ -48,7 +48,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="lblTitel" Content="Klant toevoegen" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="28" Foreground="#555555" FontWeight="Bold"/>
+                <TextBlock x:Name="lblTitel" Text="Klant toevoegen" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,20,0,0" Style="{StaticResource  H1}" />
 
                 <Label Content="Voornaam :" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
                 <TextBox x:Name="tbVoornaam" Grid.Row="2" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>

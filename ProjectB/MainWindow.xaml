@@ -9,13 +9,13 @@
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    <Grid>
+    <Grid Style="{StaticResource background}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DockPanel>
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
+        <DockPanel >
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
         </DockPanel>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -24,19 +24,25 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*"/>
+
             </Grid.ColumnDefinitions>
-            <Border Grid.Row="1" Margin="10">
+            <Border>
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
-                <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+                <StackPanel Margin="20">
                     <Button x:Name="btnDatabeheer" Content="DATABEHEER" Click="btnDatabeheer_Click" Style="{StaticResource MenuButton}"/>
                     <Button x:Name="btnOverzicht" Content="OVERZICHT" Click="btnOverzicht_Click" Style="{StaticResource MenuButton}"/>
                     <Button x:Name="btnBestellingen" Content="BESTELLINGEN" Click="btnBestellingen_Click" Style="{StaticResource MenuButton}"/>
                     <Button x:Name="btnGebruikers" Content="GEBRUIKERS" Click="btnGebruikers_Click" Style="{StaticResource MenuButton}"/>
                 </StackPanel>
             </Border>
-            <Frame  Grid.Row="0" Grid.Column="1" x:Name="Main" NavigationUIVisibility="Hidden" Background="White"/>
+            <Border Grid.Column="1" Margin="20" >
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+                <Frame  x:Name="Main" NavigationUIVisibility="Hidden"/>
+            </Border>
         </Grid>
     </Grid>
 
