@@ -38,7 +38,7 @@ namespace ProjectB
             tbNaam.Text = geselecteerdeLeverancier.Naam;
             tbContactpersoon.Text = geselecteerdeLeverancier.Contactpersoon;
             tbStraatnaam.Text = geselecteerdeLeverancier.Straatnaam;
-           tbHuisnummer.Text = geselecteerdeLeverancier.Huisnummer.ToString();
+            tbHuisnummer.Text = geselecteerdeLeverancier.Huisnummer.ToString();
             tbPostcode.Text = geselecteerdeLeverancier.Gemeente.Postcode.ToString();
             tbTelefoonnumer.Text = geselecteerdeLeverancier.Telefoonnummer.ToString();
             tbEmail.Text = geselecteerdeLeverancier.Emailadres;
@@ -47,27 +47,46 @@ namespace ProjectB
         public ProjectBEntities ctx = new ProjectBEntities();
         public bool isNieuweLeverancier;
         public Leverancier geselecteerdeLeverancier;
+        public bool geldigeIngave = true;
         private void btnOpslaan_Click(object sender, RoutedEventArgs e)
         {
-            geselecteerdeLeverancier.Naam = tbNaam.Text;
-            geselecteerdeLeverancier.Contactpersoon = tbContactpersoon.Text;
-            geselecteerdeLeverancier.Straatnaam = tbStraatnaam.Text;
-            geselecteerdeLeverancier.Huisnummer = Convert.ToInt32(tbHuisnummer.Text);
-            geselecteerdeLeverancier.Bus = tbBus.Text;
-            Gemeente gemeente = (Gemeente)cbGemeente.SelectedItem;
-            geselecteerdeLeverancier.PostcodeID = gemeente.PostcodeID;
-            geselecteerdeLeverancier.Telefoonnummer = tbTelefoonnumer.Text;
-            geselecteerdeLeverancier.Emailadres = tbEmail.Text;
 
-            if (MessageBox.Show("Leverancier opslaan?", "Leverancier Opslaan", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (tbNaam.Text == "") geldigeIngave = false;
+            if (tbContactpersoon.Text == "") geldigeIngave = false;
+            if (tbStraatnaam.Text == "") geldigeIngave = false;
+            if (tbHuisnummer.Text == "") geldigeIngave = false;
+            if (tbTelefoonnumer.Text == "") geldigeIngave = false;
+            if (cbGemeente.SelectedIndex == -1) geldigeIngave = false;
+            if (tbEmail.Text == "") geldigeIngave = false;
+
+
+
+            if (geldigeIngave)
             {
-                if (isNieuweLeverancier) ctx.Leverancier.Add(geselecteerdeLeverancier);
-                ctx.SaveChanges();
-                this.DialogResult = true;
-                this.Close();
+                geselecteerdeLeverancier.Naam = tbNaam.Text;
+                geselecteerdeLeverancier.Contactpersoon = tbContactpersoon.Text;
+                geselecteerdeLeverancier.Straatnaam = tbStraatnaam.Text;
+                geselecteerdeLeverancier.Huisnummer = Convert.ToInt32(tbHuisnummer.Text);
+                geselecteerdeLeverancier.Bus = tbBus.Text;
+                Gemeente gemeente = (Gemeente)cbGemeente.SelectedItem;
+                geselecteerdeLeverancier.PostcodeID = gemeente.PostcodeID;
+                geselecteerdeLeverancier.Telefoonnummer = tbTelefoonnumer.Text;
+                geselecteerdeLeverancier.Emailadres = tbEmail.Text;
+
+                if (MessageBox.Show("Leverancier opslaan?", "Leverancier Opslaan", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    if (isNieuweLeverancier) ctx.Leverancier.Add(geselecteerdeLeverancier);
+                    ctx.SaveChanges();
+                    this.DialogResult = true;
+                    this.Close();
+                }
             }
 
-
+            else
+            {
+                MessageBox.Show("Gelieve alle velden correct in te vullen");
+                geldigeIngave = true;
+            }
         }
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {

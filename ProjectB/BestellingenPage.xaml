@@ -29,14 +29,32 @@
             </WrapPanel>
             <StackPanel x:Name="spBestellingKlant">
 
-                <DataGrid x:Name="dgBestellingenKlant"/>
+                <DataGrid x:Name="dgBestellingenKlant" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding BestellingID}"/>
+                        <DataGridTextColumn Header="Klant" Binding="{Binding Klant}"/>
+                        <DataGridTextColumn Header="Personeelslid" Binding="{Binding Personeelslid}"/>
+                        <DataGridTextColumn Header="Items in bestelling" Binding="{Binding aantalProductenInBestelling}"/>
+                        <DataGridTextColumn Header="Bedrag" Binding="{Binding totaalZonderBTW}"/>
+                        <DataGridTextColumn Header="Besteldatum" Binding="{Binding DatumOpgemaakt}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <WrapPanel>
                     <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestelling" Click="btnNieuweBestelling_Click"/>
                     <Button Content="print Factuur" x:Name="btnPrintFactuur" Click="btnPrintFactuur_Click"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="spBestellingLeverancier">
-                <DataGrid x:Name="dgBestellingenLeveranciers"/>
+                <DataGrid x:Name="dgBestellingenLeveranciers" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding BestellingID}"/>
+                        <DataGridTextColumn Header="Leverancier" Binding="{Binding Leverancier}"/>
+                        <DataGridTextColumn Header="Personeelslid" Binding="{Binding Personeelslid}"/>
+                        <DataGridTextColumn Header="Items in bestelling" Binding="{Binding aantalProductenInBestelling}"/>
+                        <DataGridTextColumn Header="Bedrag" Binding="{Binding totaalZonderBTW}"/>
+                        <DataGridTextColumn Header="Besteldatum" Binding="{Binding DatumOpgemaakt}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <WrapPanel>
                     <Button Content="Nieuwe bestelling" x:Name="btnNieuweBestellingLeverancier" Click="btnNieuweBestellingLeverancier_Click"/>
                     <Button Content="print Bestelbon" x:Name="btnPrintBestelbon" Click="btnPrintBestelbon_Click"/>

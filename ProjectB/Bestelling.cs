@@ -11,7 +11,8 @@ namespace ProjectB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Bestelling
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,27 +33,56 @@ namespace ProjectB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }
 
-        public int totaalProductenBestelling
+        public int aantalProductenInBestelling
         {
             get
             {
-                int totaal = 0;
-                foreach ( var item in BestellingProduct)
+                int aantal=0;
+                foreach (var item in BestellingProduct)
                 {
-                    totaal += (int)item.Aantal;
+                    aantal +=(int) item.Aantal;
                 }
-                return totaal;
+                return aantal;
             }
         }
-        public double totaalPrijsBestelling
+
+        public double totaalZonderBTW
         {
             get
             {
                 double totaal = 0;
                 foreach (var item in BestellingProduct)
                 {
-                    if (Klant != null) { totaal += (double)((item.Product.Inkoopprijs + (item.Product.Inkoopprijs / 100 * item.Product.Marge))*item.Aantal); }
-                    else { totaal += (double)((item.Product.Inkoopprijs) * item.Aantal); };
+                    if (Leverancier != null)
+                    {
+                        totaal +=(double)(item.Aantal * item.Product.Inkoopprijs);
+                    }
+                    else
+                    {
+                        totaal += (double)(item.Aantal * item.Product.Verkoopprijs);
+                    }
+                }
+
+                return totaal;
+            }
+        }
+
+        public double bedragBTWIncl
+        {
+            get
+            {
+                double totaal = 0;
+                foreach (var item in BestellingProduct)
+                {
+                    if (Leverancier != null)
+                    {
+                        totaal += (double)(item.Aantal * item.Product.totaalInclBtw);
+
+                    }
+                    else
+                    {
+                        totaal += (double)(item.Aantal * item.Product.totaalVerkoopInclBtw);
+                    }
                 }
                 return totaal;
             }

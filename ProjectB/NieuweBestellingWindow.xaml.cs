@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ProjectB
     /// <summary>
     /// Interaction logic for NieuweBestellingWindow.xaml
     /// </summary>
-    public partial class NieuweBestellingWindow : Window
+    public partial class NieuweBestellingWindow : System.Windows.Window
     {
         public NieuweBestellingWindow(Personeelslid ingelogdPersoneelslid)
         {
@@ -25,8 +26,9 @@ namespace ProjectB
             this.ingelogdPersoneelslid = ingelogdPersoneelslid;
             defaultBackground = btnProduct.Background;
             klantenLijst = ctx.Klant.Select(k => k);
+            lbFilter.ItemsSource = klantenLijst.ToList();
             lbCategorieen.ItemsSource = ctx.Categorie.Select(p => p).ToList();
-            lbProducten.ItemsSource= ctx.Product.Select(p => p).ToList();
+            lbProducten.ItemsSource = ctx.Product.Select(p => p).ToList();
             newOrder.PersoneelslidID = ingelogdPersoneelslid.PersoneelslidID;
             toKlant();
         }
@@ -38,7 +40,7 @@ namespace ProjectB
         public List<Klant> filterLijst = new List<Klant>();
         public GridLength autoHeight = new GridLength(1.0, GridUnitType.Star);
         public Bestelling newOrder = new Bestelling();
-
+        public Klant geselecteerdeKlant;
 
 
         private void tbFilter_TextChanged(object sender, TextChangedEventArgs e)
@@ -65,13 +67,12 @@ namespace ProjectB
             }
             else
             {
-                lbFilter.ItemsSource = null;
-                lbFilter.Visibility = Visibility.Collapsed;
+                lbFilter.ItemsSource = klantenLijst.ToList();
             }
         }
         private void lbFilter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Klant geselecteerdeKlant = (Klant)lbFilter.SelectedItem;
+            geselecteerdeKlant = (Klant)lbFilter.SelectedItem;
             spKlant.Visibility = Visibility.Collapsed;
             spProduct.Visibility = Visibility.Visible;
             tbBestellingVoor.Text = $"Bestelling voor: {geselecteerdeKlant.Voornaam} {geselecteerdeKlant.Achternaam}";
@@ -119,28 +120,11 @@ namespace ProjectB
         private void expand(Button sender)
         {
             collapseButtons();
-            sender.Background = Brushes.White;
-            Thickness thickness = new Thickness();
-            thickness.Left = 1;
-            thickness.Right = 1;
-            thickness.Top = 1;
-            thickness.Bottom = 0;
-            sender.BorderThickness = thickness;
         }
 
         private void collapseButtons()
         {
-            Thickness volleBorder = new Thickness();
-            volleBorder.Left = 1;
-            volleBorder.Right = 1;
-            volleBorder.Top = 1;
-            volleBorder.Bottom = 1;
-            List<Button> buttonlijst = new List<Button>() { btnProduct, btnKlant, btnWinkelkar };
-            foreach (Button item in buttonlijst)
-            {
-                item.Background = defaultBackground;
-                item.BorderThickness = volleBorder;
-            }
+
             spKlant.Visibility = Visibility.Collapsed;
             spProduct.Visibility = Visibility.Collapsed;
             spWinkelkar.Visibility = Visibility.Collapsed;
@@ -157,7 +141,7 @@ namespace ProjectB
         private void lbCategorieen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Categorie selectedCat = (Categorie)lbCategorieen.SelectedItem;
-            lbProducten.ItemsSource = ctx.Product.Where(p=>p.Categorie.CategorieNaam== selectedCat.CategorieNaam).ToList();
+            lbProducten.ItemsSource = ctx.Product.Where(p => p.Categorie.CategorieNaam == selectedCat.CategorieNaam).ToList();
         }
 
         private void btnToKlant_Click(object sender, RoutedEventArgs e)
@@ -174,17 +158,17 @@ namespace ProjectB
         {
 
             int tag = Convert.ToInt32(((Button)sender).Tag);
-            AddToBestelling(sender,tag);
+            AddToBestelling(sender, tag);
         }
 
-        public void AddToBestelling(object sender,int id)
+        public void AddToBestelling(object sender, int id)
         {
-            Button button = (Button)sender;
             BestellingProduct bestellingProduct = new BestellingProduct();
             bestellingProduct.ProductID = id;
+            Button button = (Button)sender;
+
             WrapPanel wrapPanel = (WrapPanel)button.Parent;
-            StackPanel stackPanel = (StackPanel)wrapPanel.Children[0];
-            TextBox textBox = (TextBox)stackPanel.Children[1];
+            Xceed.Wpf.Toolkit.ShortUpDown textBox = (Xceed.Wpf.Toolkit.ShortUpDown)wrapPanel.Children[1];
             bestellingProduct.Aantal = Convert.ToInt32(textBox.Text);
             newOrder.BestellingProduct.Add(bestellingProduct);
             ctx.Bestelling.Add(newOrder);
@@ -198,18 +182,36 @@ namespace ProjectB
             newOrder.BestellingProduct.Remove(newOrder.BestellingProduct.Where(bp => bp.BestellingProductID == bestellingProductID).FirstOrDefault());
             lbWinkelwagen.ItemsSource = null;
             lbWinkelwagen.ItemsSource = newOrder.BestellingProduct.ToList();
-
-
         }
 
         private void btnBestellingBevestigen_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result= MessageBox.Show("Wil je deze bestelling doorvoeren?", "Bestelling bevestigen", MessageBoxButton.YesNo);
-            if(result== MessageBoxResult.Yes)
+
+
+
+            if (geselecteerdeKlant == null)
             {
-                newOrder.DatumOpgemaakt = DateTime.Now;
-                ctx.SaveChanges();
-                this.Close();
+                MessageBox.Show("Gelieve een klant te selecteren", "Fout in bestelling", MessageBoxButton.OK, MessageBoxImage.Error);
+                toKlant();
+            }
+            else
+            {
+                if (newOrder.BestellingProduct.Count == 0)
+                {
+                    MessageBox.Show("Geen product in je bestelling", "Fout in bestelling", MessageBoxButton.OK, MessageBoxImage.Error);
+                    toProduct();
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Wil je deze bestelling doorvoeren?", "Bestelling bevestigen", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        newOrder.DatumOpgemaakt = DateTime.Now;
+                        
+                        ctx.SaveChanges();
+                        this.Close();
+                    }
+                }
             }
         }
     }

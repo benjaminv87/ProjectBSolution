@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProjectB"
+        xmlns:local="clr-namespace:ProjectB" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="NieuweBestellingLeverancierWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" Style="{StaticResource Window}">
     <WindowChrome.WindowChrome>
@@ -42,7 +42,7 @@
                         <TextBlock Text="Leverancier:"/>
                         <TextBox x:Name="tbFilter" TextChanged="tbFilter_TextChanged" Width="300"/>
                     </WrapPanel>
-                    <ListBox x:Name="lbFilter" MaxHeight="300" MouseDoubleClick="lbFilter_MouseDoubleClick" >
+                    <ListBox x:Name="lbFilter" Height="600" MouseDoubleClick="lbFilter_MouseDoubleClick" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -93,64 +93,69 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <ListBox x:Name="lbProducten" Grid.Row="2" Grid.Column="2">
+                        <ListBox x:Name="lbProducten" Height="500" Grid.Row="2" Grid.Column="2">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="500"/>
-                                            <ColumnDefinition Width="auto"/>
-                                        </Grid.ColumnDefinitions>
+                                    <StackPanel Margin="10" >
 
-                                        <WrapPanel Grid.Column="0">
+
+
+                                        <WrapPanel>
                                             <TextBlock Text="{Binding ProductID}"/>
                                             <TextBlock Text=" "/>
                                             <TextBlock Text="{Binding Naam}"/>
                                         </WrapPanel>
-                                        <WrapPanel Grid.Column="1">
-                                            <StackPanel>
-                                                <Label Content="aantal"/>
-                                                <TextBox Text="1"/>
-                                            </StackPanel>
-                                            <Button Tag="{Binding ProductID}"  Content="Toevoegen aan winkelwagen" Margin="20,20,20,20" Click="Button_Click" />
+                                        <WrapPanel>
+                                            <TextBlock Text="Inkoopprijs per"/>
+                                            <TextBlock Text=" "/>
+                                            <TextBlock Text="{Binding Eenheid}"/>
+                                            <TextBlock Text=": €"/>
+                                            <TextBlock Text="{Binding Inkoopprijs}"/>
                                         </WrapPanel>
-                                    </Grid>
+                                        <WrapPanel>
+                                            <Label FontSize="12" Content="aantal: "/>
+                                            <xctk:ShortUpDown Value="1" Increment="1"  VerticalAlignment="Center" Width="50" FontSize="12" Text="1"/>
+                                            <Button FontSize="12" Tag="{Binding ProductID}"  Content="Toevoegen aan winkelwagen" Margin="5" Click="Button_Click" Style="{StaticResource listButtonBevestigen}"/>
+                                        </WrapPanel>
+                                    </StackPanel>
 
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                         <WrapPanel HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
-                            <Button x:Name="btnToLeverancier" Content="&lt; Leverancier" Width="200" Margin="20,0,20,0" Click="btnToLeverancier_Click"/>
-                            <Button x:Name="btnToWinkewagen" Content="Winkelwagen >" Width="200" Margin="20,0,20,0" Click="btnToWinkewagen_Click"/>
+                            <Button x:Name="btnToKlant" Content="&lt; Leverancier" Click="btnToLeverancier_Click"/>
+                            <Button x:Name="btnToWinkewagen" Content="Winkelwagen >"  Click="btnToWinkewagen_Click"/>
                         </WrapPanel>
                     </Grid>
-
                 </StackPanel>
                 <Button x:Name="btnWinkelkar"  Grid.Row="4" Content="WINKELKAR" Click="btnWinkelkar_Click" Style="{StaticResource CustomExpander}"/>
-                <DockPanel x:Name="spWinkelkar" Grid.Row="5" Visibility="Collapsed">
-                    <ListBox x:Name="lbWinkelwagen" DockPanel.Dock="Top">
+                <StackPanel x:Name="spWinkelkar" Grid.Row="5">
+                    <ListBox x:Name="lbWinkelwagen" DockPanel.Dock="Top" Height="550" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="240"/>
                                     </Grid.ColumnDefinitions>
-                                    <WrapPanel Grid.Column="0">
+                                    <WrapPanel Grid.Row="0">
                                         <TextBlock Text="{Binding ProductID}"/>
-                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="   "/>
                                         <TextBlock Text="{Binding Product}"/>
-                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="    Aantal:"/>
                                         <TextBlock Text="{Binding Aantal}"/>
                                     </WrapPanel>
-                                    <Button Tag="{Binding BestellingProductID}" Grid.Column="1" Content="Verwijderen" Click="ButtonVerwijderen_Click"/>
+                                    <Button Grid.Row="1" Tag="{Binding BestellingProductID}" Grid.Column="1" Content="Verwijderen" Click="ButtonVerwijderen_Click" Style="{StaticResource listButtonVerwijderen }"/>
 
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button x:Name="btnBestellingBevestigen" DockPanel.Dock="Bottom" Height="30" Content="Bestelling bevestigen"  Width="200" Click="btnBestellingBevestigen_Click"/>
-                </DockPanel>
+                    <Button x:Name="btnBestellingBevestigen" Height="30" Content="Bestelling bevestigen" Click="btnBestellingBevestigen_Click" Style="{StaticResource listButtonBevestigen}"/>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

@@ -34,10 +34,32 @@ namespace ProjectB
         public virtual ICollection<BestellingProduct> BestellingProduct { get; set; }
         public virtual Categorie Categorie { get; set; }
         public virtual Leverancier Leverancier { get; set; }
-
         public override string ToString()
         {
             return Naam;
+        }
+
+        public double totaalInclBtw
+        {
+            get
+            {
+                return (double)(Inkoopprijs + (Inkoopprijs * ((double)BTW / 100)));
+            }
+        }
+
+        public double Verkoopprijs
+        {
+            get
+            {
+                return (double)(Inkoopprijs + (Inkoopprijs * ((double)Marge / 100)));
+            }
+        }
+        public double totaalVerkoopInclBtw
+        {
+            get
+            {
+                return (double)(Verkoopprijs + (Verkoopprijs * ((double)BTW / 100)));
+            }
         }
     }
 }

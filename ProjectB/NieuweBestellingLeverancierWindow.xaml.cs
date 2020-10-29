@@ -115,17 +115,7 @@ namespace ProjectB
         }
         private void collapseButtons()
         {
-            Thickness volleBorder = new Thickness();
-            volleBorder.Left = 1;
-            volleBorder.Right = 1;
-            volleBorder.Top = 1;
-            volleBorder.Bottom = 1;
-            List<Button> buttonlijst = new List<Button>() { btnProduct, btnLeverancier, btnWinkelkar };
-            foreach (Button item in buttonlijst)
-            {
-                item.Background = defaultBackground;
-                item.BorderThickness = volleBorder;
-            }
+
             spLeverancier.Visibility = Visibility.Collapsed;
             spProduct.Visibility = Visibility.Collapsed;
             spWinkelkar.Visibility = Visibility.Collapsed;
@@ -159,12 +149,12 @@ namespace ProjectB
         }
         public void AddToBestelling(object sender, int id)
         {
-            Button button = (Button)sender;
             BestellingProduct bestellingProduct = new BestellingProduct();
             bestellingProduct.ProductID = id;
+            Button button = (Button)sender;
+
             WrapPanel wrapPanel = (WrapPanel)button.Parent;
-            StackPanel stackPanel = (StackPanel)wrapPanel.Children[0];
-            TextBox textBox = (TextBox)stackPanel.Children[1];
+            Xceed.Wpf.Toolkit.ShortUpDown textBox = (Xceed.Wpf.Toolkit.ShortUpDown)wrapPanel.Children[1];
             bestellingProduct.Aantal = Convert.ToInt32(textBox.Text);
             newOrder.BestellingProduct.Add(bestellingProduct);
             ctx.Bestelling.Add(newOrder);

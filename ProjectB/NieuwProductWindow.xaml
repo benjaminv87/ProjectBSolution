@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
         Title="NieuwProductWindow" Height="450" Width="800" Style="{StaticResource Window}">
@@ -71,26 +72,26 @@
                         <TextBox x:Name="tbNaam" Grid.Row="2" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
                         <Label Content="Eancode :" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                        <TextBox x:Name="tbEancode" Grid.Row="3" Grid.Column="2" TextChanged="tbEancode_TextChanged" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
+                        <TextBox x:Name="tbEancode" LostFocus="tbEancode_LostFocus" Grid.Row="3" Grid.Column="2" TextChanged="tbEancode_TextChanged" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="300" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
 
                         <Label Content="Eenheid :" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
                         <TextBox x:Name="tbEenheid" Grid.Row="4" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
                         <Label Content="Inkoopprijs :" HorizontalAlignment="Right"  Grid.Row="5" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                        <TextBox x:Name="tbInkoopprijs" Grid.Row="5" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                        <xctk:DoubleUpDown x:Name="tbInkoopprijs" FormatString="C2" Value="0.01" Increment=".01" Maximum="999999" Minimum="0.01"  Grid.Row="5" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
 
                         <Label Content="BTW:" HorizontalAlignment="Right"  Grid.Row="6" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                        <TextBox x:Name="tbBTW" Grid.Row="6" Grid.Column="2"  TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
+                        <ComboBox x:Name="cbBTW" Grid.Row="6" Grid.Column="2" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
                         <Label Content="Marge :" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
-                        <TextBox x:Name="tbMarge" Grid.Row="7" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
+                        <xctk:ShortUpDown Value="20" Increment="1" Maximum="100" Minimum="1" x:Name="tbMarge" Grid.Row="7" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10"  Foreground="#555555"/>
 
 
                         <Label Content="Leverancier :" HorizontalAlignment="Right"  Grid.Row="8" Grid.Column="1" Foreground="#555555" FontSize="20" Margin=" 0,20,0,20" Padding="20,10,20,10"/>
                         <StackPanel  Grid.Row="8" Grid.Column="2" >
-                            <TextBox x:Name="tbLeverancier" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" />
-                            <ListBox x:Name="lbLeverancier"/>
+                            <TextBox x:Name="tbLeverancier" TextChanged="tbLeverancier_TextChanged" VerticalContentAlignment="Center" Foreground="#555555" FontSize="20" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" />
+                            <ListBox x:Name="lbLeverancier" MinWidth="250" MaxWidth="250" MinHeight="150"  MaxHeight="150"/>
                         </StackPanel>
 
 

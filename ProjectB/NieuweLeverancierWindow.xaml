@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectB"
         mc:Ignorable="d"
-        Title="NieuweLeverancierWindow" Height="450" Width="800" Style="{StaticResource Window}">
+        Title="NieuweLeverancierWindow" Width="800" Style="{StaticResource Window}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
@@ -86,8 +86,8 @@
                     <TextBox x:Name="tbEmail" Grid.Row="10" Grid.Column="2" TextAlignment="Center" FontSize="20" BorderThickness="0,0,0,1" Width="250" Margin=" 0,20,0,20" Padding="0,10,0,10" Foreground="#555555"/>
 
                     <WrapPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-                        <Button x:Name="btnOpslaan" Click="btnOpslaan_Click"  Content="Aanmaken/opslaan" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20" />
-                        <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20"  />
+                        <Button x:Name="btnOpslaan" Click="btnOpslaan_Click"  Content="Aanmaken/opslaan"/>
+                        <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel"/>
                     </WrapPanel>
 
                 </Grid>

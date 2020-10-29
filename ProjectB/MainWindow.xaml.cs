@@ -24,6 +24,7 @@ namespace ProjectB
         {
             InitializeComponent();
             this.ingelogdPersoneelslid = ingelogdPersoneelslid;
+            if (ingelogdPersoneelslid.FunctieID != 1) { btnGebruikers.Visibility = Visibility.Collapsed; }
         }
 
         public Personeelslid ingelogdPersoneelslid;
@@ -51,6 +52,24 @@ namespace ProjectB
         private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Ben je zeker dat je wil uitloggen?", "Uitloggen", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                LoginWindow window = new LoginWindow();
+                window.Show();
+                ingelogdPersoneelslid = null;
+                this.Close();
+            }
+        }
+
+        private void btnWachtwoord_Click(object sender, RoutedEventArgs e)
+        {
+            NieuwWachtwoordWindow window = new NieuwWachtwoordWindow(ingelogdPersoneelslid);
+            window.ShowDialog();
         }
     }
 }

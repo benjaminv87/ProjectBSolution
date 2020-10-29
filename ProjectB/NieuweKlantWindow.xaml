@@ -91,8 +91,8 @@
 
 
                         <WrapPanel Grid.Row="12" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-                            <Button x:Name="btCreateCustomer" Click="btCreateCustomer_Click"  Content="Aanmaken" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20" />
-                            <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel" Width="140" HorizontalAlignment="Center" FontSize="18" Background="#555555" Foreground="#fbf7f0" Padding="20,0,20,5" Margin="20,20,20,20"  />
+                            <Button x:Name="btCreateCustomer" Click="btCreateCustomer_Click"  Content="Aanmaken"/>
+                            <Button x:Name="btCancel" Click="btCancel_Click"  Content="Cancel"/>
                         </WrapPanel>
 
                     </Grid>

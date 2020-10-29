@@ -49,12 +49,11 @@ namespace ProjectB
             tbEmail.Text = geselecteerdeKlant.Emailadres;
             tbOpmerking.Text = geselecteerdeKlant.Opmerking;
             cbGemeente.SelectedItem = ctx.Gemeente.Where(g => g.PostcodeID == geselecteerdeKlant.PostcodeID).FirstOrDefault();
-
-
         }
 
         public bool isNieuweKlant;
         public Klant geselecteerdeKlant;
+        public bool geldigeIngave = true;
         private void btnCloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -62,26 +61,47 @@ namespace ProjectB
 
         private void btCreateCustomer_Click(object sender, RoutedEventArgs e)
         {
-            geselecteerdeKlant.Voornaam = tbVoornaam.Text;
-            geselecteerdeKlant.Achternaam = tbFamilienaam.Text;
-            geselecteerdeKlant.Straatnaam = tbStraatnaam.Text;
-            geselecteerdeKlant.Huisnummer = Convert.ToInt32(tbHuisnummer.Text);
-            Gemeente geselecteerdeGemeente = cbGemeente.SelectedItem as Gemeente;
-            geselecteerdeKlant.PostcodeID = geselecteerdeGemeente.PostcodeID;
-            geselecteerdeKlant.Telefoonnummer = tbTelefoonnumer.Text;
-            geselecteerdeKlant.Emailadres = tbEmail.Text;
-            geselecteerdeKlant.Opmerking = tbOpmerking.Text;
 
-            var result = MessageBox.Show("Klantgegevens opslaan?", "Klantgegevens", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if (tbVoornaam.Text == "") geldigeIngave = false;
+            if (tbFamilienaam.Text == "") geldigeIngave = false;
+            if (tbStraatnaam.Text == "") geldigeIngave = false;
+            if (tbHuisnummer.Text == "") geldigeIngave = false;
+            if (cbGemeente.SelectedIndex == -1) geldigeIngave = false;
+            if (tbTelefoonnumer.Text == "") geldigeIngave = false;
+            if (tbEmail.Text == "") geldigeIngave = false; 
+
+
+            if (geldigeIngave)
             {
+                geselecteerdeKlant.Voornaam = tbVoornaam.Text;
+                geselecteerdeKlant.Achternaam = tbFamilienaam.Text;
+                geselecteerdeKlant.Straatnaam = tbStraatnaam.Text;
+                geselecteerdeKlant.Huisnummer = Convert.ToInt32(tbHuisnummer.Text);
+                Gemeente geselecteerdeGemeente = cbGemeente.SelectedItem as Gemeente;
+                geselecteerdeKlant.PostcodeID = geselecteerdeGemeente.PostcodeID;
+                geselecteerdeKlant.Telefoonnummer = tbTelefoonnumer.Text;
+                geselecteerdeKlant.Emailadres = tbEmail.Text;
+                geselecteerdeKlant.Opmerking = tbOpmerking.Text;
+
+                var result = MessageBox.Show("Klantgegevens opslaan?", "Klantgegevens", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
 
                     if (isNieuweKlant) ctx.Klant.Add(geselecteerdeKlant);
                     ctx.SaveChanges();
                     DialogResult = true;
                     this.Close();
-                
+
+                }
             }
+            else
+            {
+                MessageBox.Show("Gelieve alle velden correct in te vullen");
+                geldigeIngave = true;
+            }
+
+
+
         }
 
         private void btCancel_Click(object sender, RoutedEventArgs e)

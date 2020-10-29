@@ -36,20 +36,27 @@ namespace ProjectB
         public virtual ICollection<Bestelling> Bestelling { get; set; }
         public virtual Gemeente Gemeente { get; set; }
 
-        public string Adres
-        {
-            get 
-            { 
-                return $"{Straatnaam} {Huisnummer} {Bus}"; 
-            }
-        }
-
-
-
-
         public override string ToString()
         {
             return $"{Voornaam} {Achternaam}";
+        }
+
+        public string Adres
+        {
+            get
+            {
+                string adres;
+                if (Bus == "")
+                {
+                    adres= $"{Straatnaam} {Huisnummer} {Bus}";
+                }
+                else
+                {
+                    adres = $"{Straatnaam} {Huisnummer}";
+
+                }
+                return adres;
+            }
         }
     }
 }

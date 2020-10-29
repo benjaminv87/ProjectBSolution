@@ -27,29 +27,92 @@
                 <Button x:Name="btnProducten" Content="Producten" Click="btnProducten_Click" />
                 <Button x:Name="btnLeveranciers" Content="Leveranciers" Click="btnLeveranciers_Click" />
                 <Button x:Name="btnKlanten" Content="Klanten" Click="btnKlanten_Click" />
+                <Button x:Name="btnCategoriën" Content="Categoriën" Click="btnCategoriën_Click" />
+
             </WrapPanel>
             <StackPanel x:Name="spProducten">
-                <DataGrid x:Name="dgProducten"/>
+                <WrapPanel>
+                    <TextBlock Text="Product :"/>
+                    <TextBox x:Name="tbProductFilter" TextChanged="tbProductFilter_TextChanged" Width="300"/>
+                </WrapPanel>
+                <DataGrid x:Name="dgProducten" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ProductID}"/>
+                        <DataGridTextColumn Header="EanCode" Binding="{Binding EanCode}"/>
+
+                        <DataGridTextColumn Header="Product" Binding="{Binding Naam}"/>
+                        <DataGridTextColumn Header="Leverancier" Binding="{Binding Leverancier}"/>
+                        <DataGridTextColumn Header="Categorie" Binding="{Binding Categorie}"/>
+
+                        <DataGridTextColumn Header="Eenheid" Binding="{Binding Eenheid}"/>
+
+                        <DataGridTextColumn Header="Inkoopprijs" Binding="{Binding Inkoopprijs}"/>
+                        <DataGridTextColumn Header="Marge" Binding="{Binding Marge}"/>
+                        <DataGridTextColumn Header="Verkoopprijs" Binding="{Binding Verkoopprijs}"/>
+
+
+
+                    </DataGrid.Columns>
+                </DataGrid>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button x:Name="btnNieuwProduct" Content="Nieuw product" Click="btnNieuwProduct_Click"/>
                     <Button x:Name="btnAanpassenProduct" Click="btnAanpassenProduct_Click" Content="Product aanpassen"/>
                 </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="spLeveranciers">
-                <DataGrid x:Name="dgLeveranciers" Width="auto"/>
+                <WrapPanel>
+                    <TextBlock Text="Leverancier:"/>
+                    <TextBox x:Name="tbLeveranciersFilter" TextChanged="tbLeveranciersFilter_TextChanged" Width="300"/>
+                </WrapPanel>
+                <DataGrid x:Name="dgLeveranciers" Width="auto" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding LeverancierID}"/>
+                        <DataGridTextColumn Header="Leverancier" Binding="{Binding Naam}"/>
+                        <DataGridTextColumn Header="Contactpersoon" Binding="{Binding Contactpersoon}"/>
+                        <DataGridTextColumn Header="Telefoon" Binding="{Binding Telefoonnummer}"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Emailadres}"/>
+                        <DataGridTextColumn Header="Adres" Binding="{Binding Adres}"/>
+                        <DataGridTextColumn Header="Postcode" Binding="{Binding Gemeente.Postcode}"/>
+                        <DataGridTextColumn Header="Gemeente" Binding="{Binding Gemeente.Gemeente1}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button x:Name="btnGenerateJsonTemplate" Content="Product Template" Click="btnGenerateJsonTemplate_Click"/>
                     <Button x:Name="btnNieuweLeverancier" Content="Nieuwe leverancier"  Click="btnNieuweLeverancier_Click"/>
                     <Button x:Name="btnAanpassenLeverancier" Content="leverancier Aanpassen"  Click="btnAanpassenLeverancier_Click"/>
                 </WrapPanel>
             </StackPanel>
-
-
             <StackPanel x:Name="spKlanten">
-                <DataGrid x:Name="dgKlanten" Width="auto" />
+                <WrapPanel>
+                    <TextBlock Text="Klantnaam:" />
+                    <TextBox x:Name="tbKlantFilter" TextChanged="tbKlantFilter_TextChanged" Margin="20,0"  Width="600" />
+                </WrapPanel>
+                <DataGrid x:Name="dgKlanten" Width="auto" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding KlantID}"/>
+                        <DataGridTextColumn Header="Voornaam" Binding="{Binding Voornaam}"/>
+                        <DataGridTextColumn Header="Achternaam" Binding="{Binding Achternaam}"/>
+                        <DataGridTextColumn Header="Telefoon" Binding="{Binding Telefoonnummer}"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Emailadres}"/>
+                        <DataGridTextColumn Header="Adres" Binding="{Binding Adres}"/>
+                        <DataGridTextColumn Header="Postcode" Binding="{Binding Gemeente.Postcode}"/>
+                        <DataGridTextColumn Header="Gemeente" Binding="{Binding Gemeente.Gemeente1}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button x:Name="btnNieuweKlant" Content="Nieuwe Klant" Click="btnNieuweKlant_Click"/>
                     <Button x:Name="btnKlantAanpassen" Content="Klant aanpassen" Click="btnKlantAanpassen_Click" />
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel x:Name="spCategoriën">
+                <WrapPanel>
+                    <TextBlock Text="Categorie :" />
+                    <TextBox x:Name="tbCategorieFilter" TextChanged="tbCategorieFilter_TextChanged" Margin="20,0"  Width="600" />
+                </WrapPanel>
+                <DataGrid x:Name="dgCategorie" Width="auto" />
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="btnNieuweCategorie" Content="Nieuwe Categorie" Click="btnNieuweCategorie_Click"/>
+                    <Button x:Name="btnCategorieAanpassen" Content="Categorie aanpassen" Click="btnCategorieAanpassen_Click" />
                 </WrapPanel>
             </StackPanel>
         </StackPanel>

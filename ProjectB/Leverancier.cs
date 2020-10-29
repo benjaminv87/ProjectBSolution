@@ -36,17 +36,26 @@ namespace ProjectB
         public virtual Gemeente Gemeente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
-
+        public override string ToString()
+        {
+            return Naam;
+        }
         public string Adres
         {
             get
             {
-                return $"{Straatnaam} {Huisnummer} {Bus}";
+                string adres;
+                if (Bus == "")
+                {
+                    adres = $"{Straatnaam} {Huisnummer} {Bus}";
+                }
+                else
+                {
+                    adres = $"{Straatnaam} {Huisnummer}";
+
+                }
+                return adres;
             }
-        }
-        public override string ToString()
-        {
-            return Naam;
         }
     }
 }

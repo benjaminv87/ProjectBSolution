@@ -19,7 +19,7 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </Border.Effect>
             <DockPanel>
-                <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click"  IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
+                <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" Style="{StaticResource CloseButton}"/>
             </DockPanel>
         </Border>
         <Border Grid.Row="1" Background="White" Width=" 400" Height="380"  >

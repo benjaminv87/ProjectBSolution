@@ -54,21 +54,35 @@ namespace ProjectB
                     break;
             }
 
-            var bestellingenKlanten = ctx.Bestelling.Where(b => b.KlantID != null);
-            var bestellingenLeveranciers = ctx.Bestelling.Where(b => b.LeverancierID != null);
-            dgBestellingenKlant.ItemsSource = bestellingenKlanten.ToList();
-            dgBestellingenLeveranciers.ItemsSource = bestellingenLeveranciers.ToList();
+            updateListbox();
 
         }
         public ProjectBEntities ctx = new ProjectBEntities();
         public Personeelslid ingelogdPersoneelslid;
+        
         private void btnNieuweBestelling_Click(object sender, RoutedEventArgs e)
         {
             new NieuweBestellingWindow(ingelogdPersoneelslid).ShowDialog();
+
+            updateListbox();
+
+
         }
         private void btnNieuweBestellingLeverancier_Click(object sender, RoutedEventArgs e)
         {
             new NieuweBestellingLeverancierWindow(ingelogdPersoneelslid).ShowDialog();
+
+            updateListbox();
+
+        }
+
+        private void updateListbox()
+        {
+            var bestellingenKlanten = ctx.Bestelling.Where(b => b.KlantID != null);
+            dgBestellingenKlant.ItemsSource = bestellingenKlanten.ToList();
+
+            var bestellingenLeveranciers = ctx.Bestelling.Where(b => b.LeverancierID != null);
+            dgBestellingenLeveranciers.ItemsSource = bestellingenLeveranciers.ToList();
         }
 
         private void FindAndReplace(Word.Application wordApp, object toFindText, object replaceWithText)
@@ -151,7 +165,7 @@ namespace ProjectB
 
                 //Leveranciergegevens               
                 FindAndReplace(wordApp, "<leverancierNaam>", leverancier.Naam);
-                FindAndReplace(wordApp, "<leverancierAdres>", leverancier.Adres);
+                FindAndReplace(wordApp, "<leverancierAdres>", $"{leverancier.Straatnaam} {leverancier.Huisnummer} {leverancier.Bus}");
                 Gemeente gemeente = ctx.Gemeente.Where(g => g.PostcodeID == leverancier.PostcodeID).FirstOrDefault();
                 FindAndReplace(wordApp, "<leverancierStad>", gemeente.ToString());
                 FindAndReplace(wordApp, "<leverancierTel>", leverancier.Telefoonnummer);
@@ -194,7 +208,7 @@ namespace ProjectB
                         double eenheidsPrijs;
                         if (documentType == "Factuur")
                         {
-                            eenheidsPrijs = (double)(productenInBestelling[i].Product.Inkoopprijs + (productenInBestelling[i].Product.Inkoopprijs / 100 * productenInBestelling[i].Product.Marge));
+                            eenheidsPrijs = (double)(productenInBestelling[i].Product.Inkoopprijs + (productenInBestelling[i].Product.Inkoopprijs * (productenInBestelling[i].Product.Marge)/100));
                         }
                         else
                         {
@@ -210,11 +224,11 @@ namespace ProjectB
                         totaal += prijs;
                         if (productenInBestelling[i].Product.BTW == 21)
                         {
-                            totaal21 += (prijs / 100 * 21);
+                            totaal21 += (prijs  * 0.21);
                         }
                         else
                         {
-                            totaal6 += (prijs / 100 * 6);
+                            totaal6 += (prijs * 0.6);
                         }
                     }
                 }

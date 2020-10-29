@@ -19,7 +19,7 @@
             <DropShadowEffect ShadowDepth="1"/>
         </Border.Effect>
         <DockPanel >
-            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" IsHitTestVisible="True" Style="{StaticResource CloseButton}"/>
+            <Button x:Name="btnCloseWindow" Click="btnCloseWindow_Click" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource CloseButton}"/>
         </DockPanel>
         </Border>
         <Grid Grid.Row="1">
@@ -40,6 +40,9 @@
                     <Button x:Name="btnOverzicht" Content="OVERZICHT" Click="btnOverzicht_Click" Style="{StaticResource MenuButton}"/>
                     <Button x:Name="btnBestellingen" Content="BESTELLINGEN" Click="btnBestellingen_Click" Style="{StaticResource MenuButton}"/>
                     <Button x:Name="btnGebruikers" Content="GEBRUIKERS" Click="btnGebruikers_Click" Style="{StaticResource MenuButton}"/>
+                    <Button x:Name="btnWachtwoord" Content="WACHTWOORD WIJZIGEN" Click="btnWachtwoord_Click" Style="{StaticResource MenuButton}"/>
+                    <Button x:Name="btnLogout" Content="UITLOGGEN" Click="btnLogout_Click" Style="{StaticResource MenuButton}"/>
+
                 </StackPanel>
             </Border>
             <Border Grid.Column="1" Margin="20" >
